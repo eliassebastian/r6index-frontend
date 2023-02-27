@@ -1,9 +1,13 @@
 :root {
+  --bg-dark: rgb(0, 2, 18);
+  --bg-darkgray: rgb(18, 18, 18);
   --background-color: #24384e;
   --background-color-accent: #192c41;
   --color-offwhite: #f7f8f8;
   --color-offwhite-accent: #dcdcdc;
   --color-white: #ffffff;
+  --color-cream: #f0f0ea;
+  --color-lightgray: #eeeae7;
 
 }
 
@@ -22,7 +26,7 @@ html {
 html, body {
   height: 100%;
   overflow-x: hidden;
-  background-color: var(--background-color);
+  background-color: var(--bg-darkgray);
 }
 
 body {
