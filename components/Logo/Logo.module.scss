@@ -2,7 +2,7 @@
     font-size: 1em;
     font-family: var(--Inter-Font);
     font-weight: 900;
-    letter-spacing: 0.1em;
+    //letter-spacing: 0.1em;
     line-height: 1;
     text-align: center;
 }
@@ -10,11 +10,11 @@
 
 .r6 {
     padding-right: 0.25em;
-    color: #FCFBF5; //todo
+    color: var(--color-offwhite); //todo
 }
 
 .index {
-    background-color: #FCFBF5; //todo
-    color: blue; //todo
+    background-color: var(--color-offwhite); //todo
+    color: var(--background-color); //todo
     padding: 0 0.25em;
 }
