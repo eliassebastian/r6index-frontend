@@ -1,0 +1,81 @@
+
+.button {
+    position: relative;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.5s ease;
+    opacity: 0.8;
+    
+    &:hover {
+        opacity: 1;
+    }
+
+    // & > * {
+    //     transition: opacity 0.5s ease;
+    //     opacity: 0.8;
+    // }
+}
+
+.container {
+    display: flex;
+
+}
+
+.gradient_wrapper {
+    display: flex;
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1/1;
+        background: radial-gradient(transparent, transparent, #fff, transparent, transparent);;
+        background-size: 300% 300%;
+        border-radius: 32px;
+        padding: 1px;
+        mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        will-change: background-position;
+        animation: animate_gradient 10s linear infinite;
+    }
+}
+
+.child_wrapper {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 9999px;
+    color: var(--color-cream);
+    //background: rgba(0,0,0,.2);
+}
+
+@keyframes animate_gradient {
+    0%{
+        background-position:-20% -20%
+    }
+    25%{
+        background-position:30% 80%
+    }
+    50%{
+        background-position:110% 110%
+    }
+    75%{
+        background-position:80% 30%
+    }
+    to{
+        background-position:-20% -20%
+    }
+}
