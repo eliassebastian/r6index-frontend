@@ -1,0 +1,102 @@
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    min-height: 30px;
+}
+
+.back_btn {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+        display: block;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background-color: transparent;
+        opacity: 0.5;
+        transition: opacity 0.25s ease;
+    
+        svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: var(--color-offwhite-accent);
+        }
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+.input {
+    margin-left: 1rem;
+    border: none;
+    outline: none;
+    flex: 1;
+    background-color: transparent;
+    font-size: 1.75rem;
+    color: var(--color-offwhite-accent);
+
+    &::placeholder {
+        font-size: 1.5rem;
+    }
+}
+
+.clearbtn_wrapper {
+    display: flex;
+    border-right: 1px solid rgb(70, 70, 70);
+    padding-right: .5rem;
+    margin-right: 1rem;
+}
+
+.clear_btn {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    //margin-right: .5rem;
+    border: none;
+    //border-right: 1.5px solid var(--color-offwhite-accent);
+    background-color: transparent;
+    //padding-right: .5rem;
+    opacity: 0.5;
+    transition: opacity 0.25s ease;
+
+    &:hover {
+        opacity: 0.8;
+    }
+    
+    svg {
+        width: 2.5rem;
+        height: 2.5rem;
+        fill: var(--color-offwhite-accent);
+    }  
+}
+
+.platforms {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+}
+
+.platform_btn {
+    position: relative;
+    display: inline-block;
+    padding: .25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: transparent;
+    margin: 0;
+    border: none;
+    opacity: 0.5;
+
+    svg {
+        fill: var(--color-offwhite-accent);
+    }
+}
