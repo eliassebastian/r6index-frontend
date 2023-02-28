@@ -1,6 +1,7 @@
 :root {
   --bg-dark: rgb(0, 2, 18);
   --bg-darkgray: rgb(18, 18, 18);
+  --bg-darkgray-accentone: rgb(28, 28, 28);
   --background-color: #24384e;
   --background-color-accent: #192c41;
   --color-offwhite: #f7f8f8;
@@ -8,7 +9,13 @@
   --color-white: #ffffff;
   --color-cream: #f0f0ea;
   --color-lightgray: #eeeae7;
-
+  --color-az-cream: #ebe6e0;
+  --color-palesmoke: #babeb7;
+  --color-ashwhite: #eef3f2;
+  --color-rabbitfur: #dfdfdd;
+  --color-bluepurple: #403e53;
+  --color-spiritblue: #2f4773;
+  --primary-font: var(--font-inter);
 }
 
 *, *::before, *::after {
