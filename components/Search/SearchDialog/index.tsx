@@ -8,6 +8,10 @@ import styles from './SearchDialog.module.scss';
 const SearchDialog = () => {
     const { isVisible, setVisible } = useContext(SearchDialogContext);
 
+    const closeDialog = () => {
+        setVisible(false);
+    }
+
     useLayoutEffect(() => {
         if (!isVisible) return;
     }, [isVisible]);
@@ -17,12 +21,12 @@ const SearchDialog = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.background}>
-                <div className={styles.backdrop} onPointerDown={() => { setVisible(false) }}></div>
+                <div className={styles.backdrop} onPointerDown={closeDialog}></div>
                 <div className={styles.container}>
                     <div className={styles.padding}>
                         <div className={styles.content}>
                             <div className={styles.searchbar_wrapper}>
-                                <SearchBar/>
+                                <SearchBar onClose={closeDialog}/>
                             </div>
                         </div>
                     </div>
