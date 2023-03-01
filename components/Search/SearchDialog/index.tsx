@@ -3,6 +3,8 @@
 import SearchDialogContext from '@/context/SearchDialogContext';
 import { useContext, useLayoutEffect } from 'react';
 import SearchBar from '../SearchBar';
+import SearchRecentSearches from '../SearchRecentSearches';
+import SearchRow from '../SearchRow';
 import styles from './SearchDialog.module.scss';
 
 const SearchDialog = () => {
@@ -33,8 +35,15 @@ const SearchDialog = () => {
                 <div className={styles.container}>
                     <div className={styles.padding}>
                         <div className={styles.content}>
+                            {/* <div className={styles.content_bg}></div> */}
                             <div className={styles.searchbar_wrapper}>
                                 <SearchBar onClose={closeDialog}/>
+                            </div>
+                            <div className={styles.searchbar_content}>
+                                <SearchRow title={"Recent Searches"}>
+                                    <SearchRecentSearches/>
+                                </SearchRow>
+                               
                             </div>
                         </div>
                     </div>
