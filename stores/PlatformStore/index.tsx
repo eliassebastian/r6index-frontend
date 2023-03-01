@@ -1,7 +1,7 @@
+import { Platform } from '@/types/Platform';
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
-type Platform = 0 | 1 | 2;
 
 type State = {
     platform: Platform;
