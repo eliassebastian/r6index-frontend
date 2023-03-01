@@ -11,7 +11,7 @@
 .back_btn {
     display: none;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 768px), (max-height: 700px) {
         display: block;
         position: relative;
         padding: 0;
@@ -19,7 +19,8 @@
         border: none;
         background-color: transparent;
         opacity: 0.5;
-        transition: opacity 0.25s ease;            
+        transition: opacity 0.25s ease; 
+        cursor: pointer;          
 
         svg {
             width: 2.5rem;
@@ -34,7 +35,7 @@
 }
 
 .input {
-    margin-left: 1rem;
+    margin-left: .5rem;
     border: none;
     outline: none;
     flex: 1;
@@ -43,7 +44,14 @@
     color: var(--color-offwhite-accent);
 
     &::placeholder {
-        font-size: 1.5rem;
+        font-size: 1.65rem;
+        color: var(--color-palesmoke);
+        opacity: 0.75;
+        //margin-bottom: 5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        margin-left: 1rem;
     }
 }
 
@@ -66,6 +74,7 @@
     //padding-right: .5rem;
     opacity: 0.5;
     transition: opacity 0.25s ease;
+    cursor: pointer;
 
     &:hover {
         opacity: 0.8;
@@ -97,6 +106,7 @@
     opacity: 0.75;
     color: var(--color-offwhite-accent);
     transition: opacity 0.25s ease, color 0.25s ease;
+    cursor: pointer;
 
     svg {
         width: 1.75rem;
