@@ -22,7 +22,7 @@ export const usePlatformStore = create<State, [["zustand/persist", State]]>(
         }),
         {
             name: 'r6index-platform',
-            storage: createJSONStorage(() => localStorage)
+            storage: createJSONStorage(() => sessionStorage)
         }
     )
 )
