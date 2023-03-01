@@ -91,6 +91,7 @@
 
 .close_btn {
     position: absolute;
+    display: block;
     top: -2rem;
     right: -2rem;
     padding: .5rem;
@@ -111,5 +112,9 @@
 
     &:hover {
         scale: 1.05;
+    }
+
+    @media only screen and (max-width: 768px) {
+        display: none;   
     }
 }
