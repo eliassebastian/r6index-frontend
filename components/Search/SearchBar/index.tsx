@@ -35,12 +35,17 @@ const SearchBar = ({ onClose }: SearchBarProps) => {
             </button>
             <input 
                 ref={inputRef} 
-                className={styles.input} 
+                className={styles.input}
+                required={true}
                 type="text" 
                 value={search} 
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Search Player Name/ID"
                 maxLength={50}
+                autoComplete={"off"}
+                autoCorrect={"off"}
+                autoCapitalize={"off"}
+                spellCheck={"false"}
             />
             {
                 search.length > 0 &&
