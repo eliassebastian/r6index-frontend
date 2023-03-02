@@ -136,6 +136,7 @@
 .searchbar_content {
     position: relative;
     display: flex;
+    flex-direction: column;
     overflow-y: auto;
     flex: 1;
     //border-radius: .5rem;
