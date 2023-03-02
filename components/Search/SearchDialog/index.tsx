@@ -3,6 +3,7 @@
 import SearchDialogContext from '@/context/SearchDialogContext';
 import { useContext, useLayoutEffect } from 'react';
 import SearchBar from '../SearchBar';
+import SearchFavourites from '../SearchFavourites';
 import SearchRecentSearches from '../SearchRecentSearches';
 import SearchRow from '../SearchRow';
 import styles from './SearchDialog.module.scss';
@@ -33,25 +34,26 @@ const SearchDialog = () => {
             <div className={styles.background}>
                 <div className={styles.backdrop} onPointerDown={closeDialog}></div>
                 <div className={styles.container}>
-                    <div className={styles.padding}>
-                        <div className={styles.content}>
-                            {/* <div className={styles.content_bg}></div> */}
-                            <div className={styles.searchbar_wrapper}>
-                                <SearchBar onClose={closeDialog}/>
-                            </div>
-                            <div className={styles.searchbar_content}>
-                                <SearchRow title={"Recent Searches"}>
-                                    <SearchRecentSearches/>
-                                </SearchRow>
-                               
-                            </div>
-                        </div>
-                    </div>
                     <button className={styles.close_btn} onClick={closeDialog}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                         </svg>
                     </button>
+                    <div className={styles.inner}>
+                        <div className={styles.flex_wrapper}>
+                            <div className={styles.searchbar_wrapper}>
+                                <SearchBar onClose={closeDialog}/>
+                            </div>
+                            <div className={styles.searchbar_content}>
+                                <SearchRow title={"Favourites"}>
+                                    <SearchFavourites/>
+                                </SearchRow>
+                                <SearchRow title={"Recent Searches"}>
+                                    <SearchRecentSearches/>
+                                </SearchRow>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
