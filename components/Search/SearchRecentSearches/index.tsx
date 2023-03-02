@@ -1,3 +1,5 @@
+'use client';
+
 import type { RecentSearch } from '@/types/RecentSearch';
 import { useRecentSearchesStore } from '@/stores/RecentSearchesStore';
 import styles from './SearchRecentSearches.module.scss';
