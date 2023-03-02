@@ -11,7 +11,7 @@ interface SearchDialogProps {
 const SearchDialogWrapper = ({ children }: SearchDialogProps) => {
 
     const [isVisible, setVisible] = useState(false);
-    const clonedElement = cloneElement(children, { onClick: () => { console.log('click'); setVisible(value => !value) } });
+    const clonedElement = cloneElement(children, { onClick: () => { setVisible(value => !value) } });
 
     return (
         <>
