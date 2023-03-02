@@ -20,20 +20,24 @@
 
 .item {
     list-style: none;
+    display: flex;
+    justify-content: center;
 
     a {
         display: flex;
         flex-direction: column;
+        width: max-content;
         position: relative;
         align-items: center;
         justify-content: center;
+        transition: scale 0.25s ease;
 
-        &:hover .img_wrapper {
+        &:hover {
             scale: 0.96;
-        }
 
-        &:hover .name {
-            opacity: 0.6;
+            .name {
+                opacity: 0.6;
+            }
         }
     }
 }
@@ -46,7 +50,6 @@
     overflow: hidden;
     background-color: var(--bg-lightgray-accenttwo);
     border: 3px solid var(--bg-lightgray-accenttwo);
-    transition: scale 0.25s ease;
 }
 
 .name {
