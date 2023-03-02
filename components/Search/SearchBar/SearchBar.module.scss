@@ -117,6 +117,11 @@
     &:hover {
         opacity: 0.9 !important;
     }
+
+    &:hover:disabled {
+        opacity: 0.75 !important;
+        cursor: not-allowed;
+    }
 }
 
 .platform_bg {
