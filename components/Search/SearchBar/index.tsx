@@ -48,8 +48,6 @@ const SearchBar = ({ onClose }: SearchBarProps) => {
 
     }, [platform]);
 
-    
-
     return (
         <form className={styles.form} onSubmit={onSubmit}>
             <button className={styles.back_btn} onClick={closeDialog}>
