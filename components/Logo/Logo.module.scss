@@ -1,6 +1,6 @@
 .wrapper {
     font-size: 1em;
-    font-family: var(--Inter-Font);
+    font-family: var(--font-inter);
     font-weight: 900;
     //letter-spacing: 0.1em;
     line-height: 1;
@@ -10,11 +10,12 @@
 
 .r6 {
     padding-right: 0.25em;
-    color: var(--color-offwhite); //todo
+    color: var(--color-lightgray); //todo
 }
 
 .index {
-    background-color: var(--color-offwhite); //todo
-    color: var(--background-color); //todo
+    background-color: var(--color-lightgray); //todo
+    color: var(--bg-darkgray); //todo
     padding: 0 0.25em;
+    border-radius: .5rem;
 }
