@@ -1,9 +1,13 @@
 import styles from "./Logo.module.scss";
 
-const Logo = () => {
+interface LogoProps {
+    full: boolean;
+}
+
+const Logo = ( { full }: LogoProps ) => {
     return (
         <div className={styles.wrapper}>
-            <span className={styles.r6}>R6</span>
+            {full && <span className={styles.r6}>R6</span>}
             <span className={styles.index}>INDEX</span>
         </div>
     )
