@@ -11,7 +11,7 @@ const HomeAction = () => {
         <div className={styles.wrapper}>
             <div className={styles.flex}>
                 <div className={styles.image_wrapper}>
-                    <Image src={ "/homeaction.png" } height={80} width={80} alt={"operator ela"} />
+                    <Image src={ "/homeaction.png" } height={80} width={80} alt={"operator ela"} priority />
                 </div>
                 <SearchDialog>
                     <button className={styles.button}>
