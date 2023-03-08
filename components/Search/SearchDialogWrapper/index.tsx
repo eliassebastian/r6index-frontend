@@ -5,13 +5,13 @@ import { cloneElement, useState, type ReactElement } from "react";
 import SearchDialog from "../SearchDialog";
 
 interface SearchDialogProps {
-    children: ReactElement;
+    children: React.ReactNode;
 }
 
 const SearchDialogWrapper = ({ children }: SearchDialogProps) => {
 
     const [isVisible, setVisible] = useState(false);
-    const clonedElement = cloneElement(children, { onClick: () => { setVisible(value => !value) } });
+    const clonedElement = cloneElement(children as React.ReactElement, { onClick: () => { setVisible(value => !value) } });
 
     return (
         <>
