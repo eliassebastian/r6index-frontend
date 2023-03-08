@@ -1,0 +1,83 @@
+:root {
+  --bg-dark: rgb(0, 2, 18);
+  --bg-darkgray: rgb(18, 18, 18);
+  --bg-darkgray-accentone: #1c1c1c;
+  --bg-darkgray-accenttwo: #282828;
+  --bg-lightgray-accentone: #393939;
+  --bg-lightgray-accenttwo: #3c3c3c;
+  --background-color: #24384e;
+  --background-color-accent: #192c41;
+  --color-offwhite: #f7f8f8;
+  --color-offwhite-accent: #dcdcdc;
+  --color-white: #ffffff;
+  --color-cream: #f0f0ea;
+  --color-lightgray: #eeeae7;
+  --color-az-cream: #ebe6e0;
+  --color-palesmoke: #babeb7;
+  --color-palesmoke-one: #a1a1a1;
+  --color-palesmoke-accent: #909090;
+  --color-ashwhite: #eef3f2;
+  --color-rabbitfur: #dfdfdd;
+  --color-bluepurple: #403e53;
+  --color-spiritblue: #2f4773;
+  --primary-font: var(--font-inter);
+
+  //main image colors
+  --color-one: #f8f6ee;
+  --color-two: #d1cab5;
+  --color-three: #bfb6a5;
+  --color-four: #a9a08a;
+  --color-five: #8e8571;
+  --color-six: #81a5ab;
+  --color-seven: #6c8c92;
+  --color-eight: #5a7a7f;
+  --color-nine: #35555f;
+  --color-dark: #090d16;
+
+  --padding-standard: clamp(1.5rem, 5vw, 3rem);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-darkgray);
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
