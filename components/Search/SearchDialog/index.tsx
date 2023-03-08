@@ -2,6 +2,7 @@
 
 import SearchDialogContext from '@/context/SearchDialogContext';
 import { useContext, useLayoutEffect } from 'react';
+import { createPortal } from 'react-dom';
 import SearchBar from '../SearchBar';
 import SearchFavourites from '../SearchFavourites';
 import SearchRecentSearches from '../SearchRecentSearches';
@@ -30,6 +31,7 @@ const SearchDialog = () => {
     if (!isVisible) return null;
 
     return (
+        createPortal(
         <div className={styles.wrapper}>
             <div className={styles.background}>
                 <div className={styles.backdrop} onPointerDown={closeDialog}></div>
@@ -57,6 +59,7 @@ const SearchDialog = () => {
                 </div>
             </div>
         </div>
+        , document.body)
     )
 };
 
