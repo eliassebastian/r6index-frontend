@@ -6,7 +6,7 @@ import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import styles from './SearchBar.module.scss';
 
 interface SearchBarProps {
-    onClose: () => void;
+    onClose?: () => void;
 }
 
 const SearchBar = ({ onClose }: SearchBarProps) => {
@@ -29,7 +29,7 @@ const SearchBar = ({ onClose }: SearchBarProps) => {
 
     const closeDialog = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        onClose();
+        onClose && onClose();
     }, [])
 
     const onPlatformBtnClick = (e: React.MouseEvent<HTMLButtonElement>, platform: Platform) => {
