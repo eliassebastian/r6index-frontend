@@ -39,13 +39,17 @@ const SearchBar = ({ onClose }: SearchBarProps) => {
 
     //platform tabs animation
     useLayoutEffect(() => {
-        if (!platformBgRef.current || !platformsRef.current) return;
+        if (!platformBgRef.current || !platformsRef.current) return
 
         const btn = platformsRef.current?.children[platform] as HTMLButtonElement;
-        platformBgRef.current.style.transform = `translateX(${btn.offsetLeft}px`;
-        platformBgRef.current.style.width = `${btn.offsetWidth}px`;
-        platformBgRef.current.style.height = `${btn.offsetHeight}px`;
+        const offsetLeft = btn.offsetLeft === 0 ? 25 * platform : btn.offsetLeft;
+        const offsetWidth = btn.offsetWidth === 0 ? 25 : btn.offsetWidth;
+        const offsetHeight = btn.offsetHeight === 0 ? 25 : btn.offsetHeight;
 
+        platformBgRef.current.style.transform = `translateX(${offsetLeft}px`;
+        platformBgRef.current.style.width = `${offsetWidth}px`;
+        platformBgRef.current.style.height = `${offsetHeight}px`;
+        
     }, [platform]);
 
     return (
