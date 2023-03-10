@@ -19,17 +19,17 @@ class ErrorBoundary extends Component<MyProps, MyState> {
       return { hasError: true, error }
     }
 
-    componentDidCatch(error?: Error, errorInfo?: ErrorInfo) {
-      // You can use your own error logging service here
-      console.log("test", {  error , errorInfo })
-    }
+    // componentDidCatch(error?: Error, errorInfo?: ErrorInfo) {
+    //   // You can use your own error logging service here
+    //   console.log("test", {  error , errorInfo })
+    // }
 
     render() {
       // Check if the error is thrown
       if (this.state.hasError) {
 
         if (this.props.fallback) {
-          return cloneElement(this.props.fallback as ReactElement, { error: this.state.error?.message, reset: () => this.setState({ hasError: false })})
+          return cloneElement(this.props.fallback as ReactElement, { error: this.state.error?.message, reset: () => this.setState({ hasError: false }) });
         }
 
         // You can render any custom fallback UI
