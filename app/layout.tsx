@@ -1,5 +1,6 @@
+import HeaderHome from '@/components/Header/HeaderHome'
 import { InterFont } from './fonts'
-import './globals.css'
+import './globals.scss'
 
 export const metadata = {
   title: 'R6 Index',
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={ InterFont.className }>
       <body>
+        <HeaderHome/>
         {children}
       </body>
     </html>
