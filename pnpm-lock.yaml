@@ -6,6 +6,7 @@ specifiers:
   '@types/react-dom': 18.0.11
   classnames: ^2.3.2
   csstype: ^3.0.10
+  devalue: ^4.3.0
   eslint: 8.34.0
   eslint-config-next: 13.2.4
   next: 13.2.4
@@ -21,6 +22,7 @@ dependencies:
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   classnames: 2.3.2
+  devalue: 4.3.0
   eslint: 8.34.0
   next: 13.2.4_b7eik3blo2x47smm2jwaxpjfoq
   react: 18.2.0
@@ -603,6 +605,10 @@ packages:
       has-property-descriptors: 1.0.0
       object-keys: 1.1.1
     dev: true
+
+  /devalue/4.3.0:
+    resolution: {integrity: sha512-n94yQo4LI3w7erwf84mhRUkUJfhLoCZiLyoOZ/QFsDbcWNZePrLwbQpvZBUG2TNxwV3VjCKPxkiiQA6pe3TrTA==}
+    dev: false
 
   /dir-glob/3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
