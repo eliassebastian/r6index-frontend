@@ -1,0 +1,53 @@
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    //max-width: 700px;
+    background-color: #732c2f;
+    border-radius: .5rem;
+    padding: 1rem;
+    gap: 1rem;
+    align-items: flex-start;
+    //border: beige solid 1px;
+}
+
+.symbol {
+
+    height: max-content;
+    width: max-content;
+
+    svg {
+        width: 3rem;
+        height: 3rem;
+        color: beige;
+    }
+}
+
+.content {
+    flex: 1;
+    font-family: var(--font-inter);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    color: beige;
+    align-self: center;
+}
+
+.btn {
+    display: flex;
+}
+
+.close_btn {
+
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    svg {
+        width: 3rem;
+        height: 3rem;
+        fill: beige;
+    }
+}
