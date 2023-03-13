@@ -44,10 +44,17 @@
     background-color: transparent;
     border: none;
     padding: 0;
+    cursor: pointer;
+    border-radius: 100%;
+    transition: background-color .1s ease;
 
     svg {
         width: 3rem;
         height: 3rem;
         fill: beige;
+    }
+
+    &:hover {
+        background-color: rgba(255,255,255,.1);
     }
 }
