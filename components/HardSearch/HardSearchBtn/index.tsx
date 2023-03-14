@@ -38,7 +38,8 @@ const HardSearchBtn = () => {
             platform,
         }
 
-        const fetchIndex = fetch('https://api.r6index.app/v1/index', {
+        const devalued = JSON.stringify(params);
+        const fetchIndex = fetch('http://127.0.0.1:8080/v1/index', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,52 +47,24 @@ const HardSearchBtn = () => {
                 'Accept': '*/*',
                 'Accept-Encoding': 'gzip, deflate, br',
             },
-            body: devalue.stringify(params),
+            body: devalued,
             signal: abortController.signal
-        });
-
-        // const fetchPlayer = async () => {
-        //     const response = await fetch('https://api.r6index.app/v1/index', {
-        //         headers: {
-        //         method: 'POST',
-        //         'Content-Type': 'application/json',
-        //         },
-        //         body: devalue.stringify(params),
-        //         signal: abortController.signal
-        //     });
-
-        //     if (response.status !== 202) {
-        //         throw new Error('Failed to find Player');
-        //     }
-
-        //     // {
-        //     //     "status": "success",
-        //     //     "duration": 1176,
-        //     //     "data": {
-        //     //         "profileId": "a2ef9315-688b-4ca6-86a0-df667fee1a0f"
-        //     //     }
-        //     // }
-
-        //     const data = await response.json();
-
-        //     setTimeout(() => {}, 5000);
-
-        //     setIsFetching(false);
-        //     console.log(data);
-        // }
+        }).then(response => { return (response.status === 200) ? 'Player Already Indexed' : response.json() });
 
         toast.promise(fetchIndex, {
             loading: 'Searching and Indexing Player',
             success: (data) => {
-                console.log(data);
-                return 'Player Found';
+                if (typeof data === 'string') {
+                    return data;
+                }
+                return `Player ${data.data.name} has been successfully indexed. Redirecting...`;
             },
             error: (err) => { 
                 setIsFetching(false);
                 return 'Could not find Player'
             },
         }, {
-            position: 'bottom-right'
+            position: 'bottom-right',
         })
 
         return () => {
