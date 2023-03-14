@@ -1,4 +1,5 @@
 import HeaderHome from '@/components/Header/HeaderHome'
+import Toast from '@/components/Toast'
 import { InterFont } from './fonts'
 import './globals.scss'
 
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
         <HeaderHome/>
         {children}
+        <Toast/>
       </body>
     </html>
   )
