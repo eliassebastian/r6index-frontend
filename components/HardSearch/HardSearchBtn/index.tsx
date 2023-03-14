@@ -1,22 +1,16 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-import * as devalue from 'devalue';
-import Dialog from '@/components/Dialog';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './HardSearchBtn.module.scss';
 import { toast } from 'react-hot-toast';
 import isUbisoftUUID from '@/utils/UbisoftID';
 
 const HardSearchBtn = () => {
-    // const [isDialogVisible, setDialogVisible] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
     const [foundPlayer, setFoundPlayer] = useState("");
     const searchParams = useSearchParams();
-
-    const fetchPlayer = async () => {
-
-    }
+    const router = useRouter();
 
     useEffect(() => {
         if (!isFetching) return;
@@ -54,9 +48,9 @@ const HardSearchBtn = () => {
         toast.promise(fetchIndex, {
             loading: 'Searching and Indexing Player',
             success: (data) => {
-                if (typeof data === 'string') {
-                    return data;
-                }
+                setIsFetching(false);
+                if (typeof data === 'string') return data;
+                setFoundPlayer(data.data.profileId);
                 return `Player ${data.data.name} has been successfully indexed. Redirecting...`;
             },
             error: (err) => { 
@@ -71,6 +65,18 @@ const HardSearchBtn = () => {
             abortController.abort();
         }
     }, [isFetching])
+
+    useEffect(() => {
+        if (foundPlayer === "") return;
+
+        const timeout = setTimeout(() => {
+            router.push(`/player/${foundPlayer}`);
+        }, 3000);
+
+        return () => {
+            clearTimeout(timeout);
+        }
+    }, [foundPlayer])
 
     return (
         <button disabled={isFetching} className={styles.btn} onClick={ () => { setIsFetching(true) } }>
