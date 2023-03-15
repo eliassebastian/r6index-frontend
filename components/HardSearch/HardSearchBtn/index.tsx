@@ -43,19 +43,18 @@ const HardSearchBtn = () => {
             },
             body: devalued,
             signal: abortController.signal
-        }).then(response => { return (response.status === 200) ? 'Player Already Indexed' : response.json() });
+        }).then(response => response.json());
 
         toast.promise(fetchIndex, {
             loading: 'Searching and Indexing Player',
             success: (data) => {
                 setIsFetching(false);
-                if (typeof data === 'string') return data;
                 setFoundPlayer(data.data.profileId);
-                return `Player ${data.data.name} has been successfully indexed. Redirecting...`;
+                return data.data.message;
             },
             error: (err) => { 
                 setIsFetching(false);
-                return 'Could not find Player'
+                return 'Error. Could not find Player'
             },
         }, {
             position: 'bottom-right',
