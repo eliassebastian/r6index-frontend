@@ -31,7 +31,7 @@ const SearchResultsGrid = ({ results }: SearchResultsGridProps) => {
             {
                 results.data.hits.length > 0 &&
                 <div className={styles.results}>
-                    {results.data.hits.map((hit) => <SearchResultsGridItem key={hit.profileId} {...hit} />)} 
+                    {results.data.hits.map((hit) => <SearchResultsGridItem key={hit.profileId} info={hit} query={results.data.query} />)} 
                 </div>
             }
         </div>
