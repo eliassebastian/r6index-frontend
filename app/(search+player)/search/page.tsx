@@ -19,26 +19,6 @@ export default function Search({ searchParams }: { searchParams: SearchParams })
     return (
         <main className={styles.main}>
             <div className={styles.container}>
-                {/* <Trending/> */}
-                {/* <section className={styles.filter}>
-                
-                </section>
-                <section className={styles.search}>
-
-                </section> */}
-                {/* <section className={styles.searchfilter}>
-                    <div className={styles.searchfilter_headers}>
-                        <div className={styles.filter_header}>
-                            <h2 className={styles.header_text}>Filter</h2>
-                        </div>
-                        <div className={styles.searchresults_header}>
-                            <h1 className={styles.header_text}>Search Results for "{searchParams.q}"</h1>
-                        </div>
-                    </div>
-                    <div>
-
-                    </div>
-                </section> */}
                 <FilterSection/>
                 <SearchResultsSection query={searchParams.q} platform={searchParams.p}/>
                 <Trending/>
