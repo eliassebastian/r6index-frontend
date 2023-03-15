@@ -59,8 +59,14 @@ export const filterAndSortData = (
 };
 
 export const minAndMax = (data: any[], field: any) => {
-    const fieldValues = data.map(player => player[field]);
+    const fieldValues = data.map(value => value[field]);
     const min = Math.min.apply(null, fieldValues);
     const max = Math.max.apply(null, fieldValues);
     return [min, max];
+}
+
+export const uniqueFieldValues = (data: any[], field: any) => {
+    const fieldValues = data.map(value => value[field]);
+    const uniqueValues = [...new Set(fieldValues)];
+    return uniqueValues;
 }
