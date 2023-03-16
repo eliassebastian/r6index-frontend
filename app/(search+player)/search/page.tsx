@@ -1,7 +1,11 @@
-import FilterSection from '@/components/SearchResults/Filter/FilterSection';
-import SearchResultsSection from '@/components/SearchResults/SearchResults/SearchResultsSection';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import SearchAndFilter from '@/components/SearchResults/SearchAndFilter/SearchAndFilter';
+import SearchAndFilterLoading from '@/components/SearchResults/SearchAndFilter/SearchAndFilterLoading';
+import SearchResults from '@/components/SearchResults/SearchResults/SearchResults';
+import SearchResultsError from '@/components/SearchResults/SearchResults/SearchResultsError';
 import Trending from '@/components/SearchResults/Trending/Trending';
 import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
 import styles from './Search.module.scss';
 
 interface SearchParams {
@@ -19,8 +23,12 @@ export default function Search({ searchParams }: { searchParams: SearchParams })
     return (
         <main className={styles.main}>
             <div className={styles.container}>
-                <FilterSection/>
-                <SearchResultsSection query={searchParams.q} platform={searchParams.p}/>
+                <ErrorBoundary fallback={<SearchResultsError/>}>
+                    <Suspense fallback={<SearchAndFilterLoading query={searchParams.q}/>}>
+                        {/* @ts-expect-error Async Server Component */}
+                        <SearchResults user={searchParams.q} platform={searchParams.p}/>
+                    </Suspense>
+                </ErrorBoundary>
                 <Trending/>
             </div>
         </main>
