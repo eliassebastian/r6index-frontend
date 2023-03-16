@@ -12,6 +12,20 @@ const getValueByPath = (obj: any, path: string) => {
     }
     return value;
 };
+
+const getNestedProperty = (obj: any, path: string) => {
+    const properties = path.split('.');
+    let currentObj = obj;
+    for (const property of properties) {
+        if (currentObj && currentObj.hasOwnProperty(property)) {
+            currentObj = currentObj[property];
+        } else {
+            return undefined;
+        }
+    }
+
+    return currentObj;
+}
   
 export const filterAndSortData = (
     data: Hit[],
@@ -58,15 +72,15 @@ export const filterAndSortData = (
     return filteredData;
 };
 
-export const minAndMax = (data: any[], field: any) => {
-    const fieldValues = data.map(value => value[field]);
+export const minAndMax = (data: any[], field: string) => {
+    const fieldValues = data.map(item => getNestedProperty(item, field))
     const min = Math.min.apply(null, fieldValues);
     const max = Math.max.apply(null, fieldValues);
     return [min, max];
 }
 
-export const uniqueFieldValues = (data: any[], field: any) => {
-    const fieldValues = data.map(value => value[field]);
+export const uniqueFieldValues = (data: any[], field: string) => {
+    const fieldValues = data.map(item => getNestedProperty(item, field))
     const uniqueValues = [...new Set(fieldValues)];
     return uniqueValues;
 }
