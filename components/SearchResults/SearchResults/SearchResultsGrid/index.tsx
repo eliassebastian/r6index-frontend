@@ -11,9 +11,6 @@ interface SearchResultsGridProps {
 }
 
 const SearchResultsGrid = ({ results }: SearchResultsGridProps) => {
-
-    console.log(results);
-
     return (
         <div className={styles.container}>
             <div className={styles.info}>
