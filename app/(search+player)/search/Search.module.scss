@@ -19,6 +19,7 @@
     flex-direction: row;
     // margin: 0 auto;
     // max-width: 1400px;
+    gap: 3rem;
     padding: 0 1rem;
 
     @media only screen and (min-width: 768px) {
@@ -26,87 +27,138 @@
     }
 }
 
-.searchfilter {
-    display: flex;
+.searchandfilter {
     position: relative;
-    flex-direction: column;
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    padding-top: 270px;
+
+    @media only screen and (min-width: 768px) {
+        padding-top: 300px;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        padding-top: 150px;
+    }
 }
 
-.searchfilter_headers {
-    height: 5rem;
+.headers {
+    position: fixed;
+    display: flex;
+    width: 100%;
+
+    @media only screen and (min-width: 1024px) {
+        position: relative;
+        gap: 3rem;
+    }
 }
 
 .filter_header {
-    width: 30%;
-}
+    display: none;
 
-.searchresults_header {
-    width: 70%;
-}
-
-.filter_header, .searchresults_header {
-    display: inline-block;
-}
-
-// .padding {
-//     padding: top: 
-// }
-
-.filter, .search, .trending {
-    //background-color: var(--color-three);
-    background-color: rgba(0,0,0,.05);
-    position: relative;
-    display: inline-block;
-    border-radius: .5rem;
-}
-
-.filter {
-    width: 25%;
-    //max-width: 25%;
-    height: 50vh;
-    padding-right: 1rem;
-
-    @media only screen and (max-width: 1199px) {
-        display: none;
+    @media only screen and (min-width: 1200px) {
+        position: sticky;
+        top: 150px;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 30vw;
+        height: 5rem;
+        padding-bottom: 3rem;
+        //padding-right: 3rem;
+        border-bottom: 1px solid rgba(62, 64, 61, .3);
     }
 }
 
-.search {
-    width: 50%;
-    //max-width: 50%;
-    height: 50vh;
+.filterheader_text {
+    color: #3E403D;
+    font-family: var(--font-inter);
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
 
-    @media only screen and (max-width: 768px) {
-        width: 100% !important;
-    }
-
-    @media only screen and (max-width: 1199px) {
-        width: 70%;
-    }
-
-}
-
-.trending {
-    width: 25%;
-    //max-width: 25%;
-    height: 50vh;
-    padding-left: clamp(1rem, 1vw, 2rem);
-
-    @media only screen and (max-width: 768px) {
-        display: none;
-    }
-
-    @media only screen and (max-width: 1199px) {
-        width: 30%;
+    @media only screen and (min-width: 769px) {
+        font-size: 1.75rem;
     }
 }
 
-.filter_wrapper {
+.search_header {
+    //class="hidden lg:block relative z-10 flex items-end justify-between h-14 pb-6 border-b border-opacity-10 border-black "
+
+    position: fixed;
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 2rem);
+    padding: 2rem 0 1rem 0;
+    top: 200px;
+    left: 1rem;
+    z-index: 20;
+
+    border-bottom: 1px solid rgba(62, 64, 61, .3);
+    background-color: var(--color-palesmoke);
+
+    @media only screen and (min-width: 768px) {
+        width: calc(100% - 6rem);
+        top: 225px;
+        left: 3rem;
+        padding: 3rem 0 1rem 0;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        display: flex;
+        position: relative;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0;
+        height: 5rem;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(62, 64, 61, .3);
+    }
+}
+
+.searchheader_text {
+    color: #3E403D;
+    font-family: var(--font-inter);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+
+    @media only screen and (min-width: 769px) {
+        font-size: 2rem;
+    }
+}
+
+.filter_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: .5rem;
+    color: #3E403D;
+    border: 0;
+    background-color: rgba(161, 161, 161, .5);
+    cursor: pointer;
     border-radius: .5rem;
-    background-color: rgba(0,0,0,.05);
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        display: none;
+    }
+
+    &:hover {
+        background-color: rgba(161, 161, 161, .8);
+    }
 }
