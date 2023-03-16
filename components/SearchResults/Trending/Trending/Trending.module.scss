@@ -11,7 +11,8 @@
     @media only screen and (min-width: 768px) {
         left: 3rem;
         width: calc(100% - 6rem);
-        padding: 100px 0 0 0;
+        padding: 0;
+        padding-top: 100px;
         //background-color: rgba(0,0,0,.05);
     }
 
@@ -19,7 +20,8 @@
         position: sticky;
         top: 0;
         right: 0;
-        padding: 150px 0 0 2rem;
+        left: 0;
+        padding-top: 150px;
         width: 25%;
         height: 100%;
         //background-color: rgba(0,0,0,.05);
