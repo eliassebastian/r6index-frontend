@@ -15,7 +15,7 @@ export type Data = {
 export type Hit = {
     aliases:    Alias[];
     firstIndex: number;
-    lastSeen:   Date;
+    lastSeen:   number;
     lastUpdate: number;
     level:      number;
     nickname:   string;
@@ -44,4 +44,6 @@ export type Ranked = {
     season:            number;
     top_rank_position: number;
     wins:              number;
+    win_lose_ratio:    number;
+    kill_death_ratio:  number;
 }
