@@ -1,5 +1,9 @@
 
 export const timeAgo = (value: string | number | Date) => {
+    if (typeof value === 'number') {
+        value = value * 1000
+    }
+
     const seconds = Math.floor((new Date().getTime() - new Date(value).getTime()) / 1000)
     let interval = seconds / 31536000
     const rtf = new Intl.RelativeTimeFormat("en", { numeric: 'auto' })
