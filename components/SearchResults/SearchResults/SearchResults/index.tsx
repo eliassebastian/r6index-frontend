@@ -1,3 +1,4 @@
+import Filter from "../../Filter/Filter";
 import FilterContextProvider from "../../Filter/FilterContextProvider";
 import SearchAndFilter from "../../SearchAndFilter/SearchAndFilter";
 import getSearch from "../fetchSearch";
@@ -13,7 +14,7 @@ const SearchResults = async ({ user, platform }: SearchResultsProps) => {
     return (
         <FilterContextProvider>
             <SearchAndFilter query={user}>
-                <div></div>
+                <Filter results={results.data.hits}/>
                 <SearchResultsGrid results={results}/>
             </SearchAndFilter>
         </FilterContextProvider>
