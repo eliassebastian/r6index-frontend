@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mui/base": "5.0.0-alpha.121",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -23,9 +24,9 @@
     "zustand": "^4.3.6"
   },
   "devDependencies": {
-    "csstype": "^3.0.10",
+    "csstype": "^3.1.1",
     "eslint-config-next": "13.2.4",
-    "sass": "^1.59.2"
+    "sass": "^1.59.3"
   },
   "peerDependencies": {
     "csstype": "^3.0.10"
