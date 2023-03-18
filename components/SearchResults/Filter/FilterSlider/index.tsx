@@ -20,11 +20,10 @@ interface FilterSliderProps {
 const css = `
     .slider {
         color: #20b2aa;
-        height: 30px;
         width: 100%;
+        height: 10px;
         display: inline-block;
         position: relative;
-        margin: 0 auto;
         cursor: pointer;
         touch-action: none;
         opacity: 0.8;
@@ -40,7 +39,7 @@ const css = `
         display: block;
         position: absolute;
         width: 100%;
-        height: 3px;
+        height: 4px;
         border-radius: 2px;
         background-color: black;
         opacity: 0.5;
@@ -49,7 +48,7 @@ const css = `
     .slider .${sliderUnstyledClasses.track} {
         display: block;
         position: absolute;
-        height: 3px;
+        height: 4px;
         border-radius: 2px;
         background-color: black;
     }
@@ -58,12 +57,17 @@ const css = `
         position: absolute;
         width: 16px;
         height: 16px;
-        margin-left: -6px;
-        margin-top: -6px;
+        margin-left: -4px;
+        margin-top: -7px;
         box-sizing: border-box;
         border-radius: 50%;
         outline: 0;
         background-color: #732c2f;
+    }
+
+    .slider .${sliderUnstyledClasses.thumb}:last-of-type {
+        margin-left: -14px;
+        margin-top: -7px;
     }
 
     .slider .label {
@@ -135,18 +139,20 @@ const FilterSlider = (props: FilterSliderProps) => {
     return (
         <div className={styles.wrapper}>
             <style type="text/css">{css}</style>
-            <SliderUnstyled 
-                className="slider"
-                value={value}
-                min={props.minMax[0]}
-                max={props.minMax[1]}
-                onChange={onChange}
-                step={props.minMax[0] / 10}
-                slots={{ valueLabel: SliderValueLabel }}
-                valueLabelFormat={(value) => `${value.toFixed(2)} ${props.title}`}
-                disableSwap
-                onChangeCommitted={onChangeCommited}
-            />
+            <div className={styles.inner}>
+                <SliderUnstyled 
+                    className="slider"
+                    value={value}
+                    min={props.minMax[0]}
+                    max={props.minMax[1]}
+                    onChange={onChange}
+                    step={props.minMax[0] / 10}
+                    slots={{ valueLabel: SliderValueLabel }}
+                    valueLabelFormat={(value) => `${value.toFixed(2)} ${props.title}`}
+                    disableSwap
+                    onChangeCommitted={onChangeCommited}
+                />
+            </div>
         </div>
     )
 }
