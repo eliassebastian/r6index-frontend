@@ -21,7 +21,7 @@ const Filter = ({ results }: FilterProps) => {
                 name={"platform"}
                 title={"Platform"}
                 type={"text"}
-                icon={"/icons/rank.svg"}
+                icon={"/icons/platform.png"}
                 field={"platform"}
                 data={getPlatforms}  
             />
@@ -29,7 +29,7 @@ const Filter = ({ results }: FilterProps) => {
                 name={"rank"}
                 title={"Rank"}
                 type={"text"}
-                icon={"/icons/rank.svg"}
+                icon={"/icons/rank.png"}
                 field={"ranked.0.rank_text"}
                 data={getRanks}  
                 sort={"ranked.0.rank"} 
@@ -38,7 +38,7 @@ const Filter = ({ results }: FilterProps) => {
                 name={"level"}
                 title={"Level"}
                 type={"range"}
-                icon={"/icons/rank.svg"}
+                icon={"/icons/level-up.png"}
                 field={"level"}
                 data={getLevels}
                 sort={"level"}
@@ -47,7 +47,7 @@ const Filter = ({ results }: FilterProps) => {
                 name={"kd"}
                 title={"K/D"}
                 type={"range"}
-                icon={"/icons/rank.svg"}
+                icon={"/icons/kill.png"}
                 field={"ranked.0.kill_death_ratio"}
                 data={getKDs}
                 sort={"ranked.0.kill_death_ratio"}
@@ -56,7 +56,7 @@ const Filter = ({ results }: FilterProps) => {
                 name={"wl"}
                 title={"W/L"}
                 type={"range"}
-                icon={"/icons/rank.svg"}
+                icon={"/icons/ratio.png"}
                 field={"ranked.0.win_lose_ratio"}
                 data={getWL}
                 sort={"ranked.0.win_lose_ratio"}
