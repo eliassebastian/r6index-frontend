@@ -87,3 +87,11 @@ export const uniqueFieldValues = (data: any[], field: string) => {
     const uniqueValues = [...new Set(fieldValues)];
     return uniqueValues;
 }
+
+export const findFilter = (filterConditions: FilterCondition[], field: string) => {
+    const filter = filterConditions.find((condition) => {
+        return condition.field === field;
+    });
+  
+    return filter ? filter.value : undefined;
+};
