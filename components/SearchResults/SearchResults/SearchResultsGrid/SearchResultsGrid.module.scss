@@ -8,6 +8,8 @@
 .info {
     position: relative;
     padding: .5rem 0;
+    width: 100%;
+    max-width: 100%;
 
     @media only screen and (min-width: 1024px) {
         padding: 1rem 0;
@@ -25,10 +27,11 @@
 
 .filters {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    //margin-top: 1rem;
+    min-height: 25px;
     gap: 1rem;
+    max-width: 100%;
+    width: 100%;
 }
 
 .filter_nr {
@@ -77,3 +80,36 @@
         grid-template-columns: repeat(4,minmax(0,1fr));
     }
 }
+
+.chips {
+    display: flex;
+    overflow-x: auto;
+    list-style: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 0;
+    gap: 1rem;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+// .overflow {    
+//     height: 25px;
+//     overflow-x: auto;
+//     overflow-y: hidden;
+//     white-space: nowrap;
+
+//     -ms-overflow-style: none;
+//     scrollbar-width: none;
+
+//     &::-webkit-scrollbar {
+//         display: none;
+//     }
+// }
