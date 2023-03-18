@@ -18,7 +18,7 @@ const FilterAccordion = ( props: FilterAccordionProps ) => {
         <div className={styles.border}>
             <button className={styles.button} aria-expanded={isOpen} onClick={ () => { setIsOpen(value => !value) } } >
                 <span className={styles.text}>
-                    <Image src={props.icon} width={28} height={28} alt={`${props.title} section accordion`}  />
+                    {/* <Image src={props.icon} width={28} height={28} alt={`${props.title} section accordion`}  /> */}
                     {props.title}
                     {
                         props.count > 0 && <span className={styles.count}>{props.count}</span>
