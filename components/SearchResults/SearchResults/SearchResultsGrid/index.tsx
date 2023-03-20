@@ -45,14 +45,16 @@ const SearchResultsGrid = ({ results }: SearchResultsGridProps) => {
                             filterCount > 0 && 
                             <ul className={styles.chips}>
                                 {filters.filterConditions.map((condition) => 
-                                    <FilterChip 
+                                    <FilterChip
+                                        key={condition.id}
                                         id={condition.id} 
                                         name={condition.name} 
                                         value={condition.value} 
                                         onDelete={removeFilterCondition}  
                                 />)}
                                 {filters.sortCriteria.map((criteria) => 
-                                    <FilterChip 
+                                    <FilterChip
+                                        key={criteria.id} 
                                         id={criteria.id}
                                         name={criteria.name}
                                         value={criteria.direction}  
