@@ -53,7 +53,9 @@ html {
 html, body {
   height: 100%;
   overflow-x: hidden;
-  background-color: var(--bg-darkgray);
+  background-color: var(--bg-lightgray-accenttwo);
+  overflow: unset; 
+  overscroll-behavior: none;
 }
 
 body {
