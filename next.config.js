@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['ubisoft-avatars.akamaized.net'],
+    domains: ['ubisoft-avatars.akamaized.net', 'staticctf.ubisoft.com'],
   }
 }
 
