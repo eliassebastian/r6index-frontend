@@ -1,6 +1,7 @@
 'use client';
 
 import { FilterCondition } from "@/types/Filter";
+import { convertNumberToTwoDecimals } from "@/utils/Numbers";
 import { SliderUnstyled, sliderUnstyledClasses } from "@mui/base";
 import { ReactNode, SyntheticEvent, useState } from "react";
 import styles from "./FilterSlider.module.scss";
@@ -148,7 +149,7 @@ const FilterSlider = (props: FilterSliderProps) => {
                     onChange={onChange}
                     step={props.minMax[0] / 10}
                     slots={{ valueLabel: SliderValueLabel }}
-                    valueLabelFormat={(value) => `${value.toFixed(2)} ${props.title}`}
+                    valueLabelFormat={(value) => `${convertNumberToTwoDecimals(value)} ${props.title}`}
                     disableSwap
                     onChangeCommitted={onChangeCommited}
                 />

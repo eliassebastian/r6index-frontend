@@ -1,5 +1,6 @@
 'use client';
 
+import { convertNumberToTwoDecimals } from '@/utils/Numbers';
 import styles from './FilterChip.module.scss';
 
 interface FilterChipProps {
@@ -10,7 +11,7 @@ interface FilterChipProps {
 }
 
 const FilterChip = (props: FilterChipProps) => {
-    const value = props.name + ": " + (Array.isArray(props.value) ? `Between ${props.value[0]} & ${props.value[1]}` : props.value);
+    const value = props.name + ": " + (Array.isArray(props.value) ? `Between ${convertNumberToTwoDecimals(props.value[0])} & ${convertNumberToTwoDecimals(props.value[1])}` : props.value);
 
     const onDelete = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         e.stopPropagation();
