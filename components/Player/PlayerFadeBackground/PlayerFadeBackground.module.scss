@@ -1,0 +1,12 @@
+
+.element {
+    //hidden lg:block fixed inset-0 bg-collectorGray z-20 pointer-events-none opacity-0
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: var(--bg-lightgray-accenttwo);
+    z-index: 20;
+    pointer-events: none;
+    opacity: 0;
+    //transition: opacity 0.1s;
+}
