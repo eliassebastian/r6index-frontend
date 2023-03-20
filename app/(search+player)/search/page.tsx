@@ -1,5 +1,4 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import SearchAndFilter from '@/components/SearchResults/SearchAndFilter/SearchAndFilter';
 import SearchAndFilterLoading from '@/components/SearchResults/SearchAndFilter/SearchAndFilterLoading';
 import SearchResults from '@/components/SearchResults/SearchResults/SearchResults';
 import SearchResultsError from '@/components/SearchResults/SearchResults/SearchResultsError';
@@ -13,12 +12,11 @@ interface SearchParams {
     p: string;
 }
 
-
 export default function Search({ searchParams }: { searchParams: SearchParams }) {
 
-    // if (!searchParams.q) {
-    //     redirect("/");
-    // }
+    if (!searchParams.q) {
+        redirect("/");
+    }
 
     return (
         <main className={styles.main}>
