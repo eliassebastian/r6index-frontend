@@ -12,7 +12,7 @@ const PlayerFavourite = dynamic(() => import("@/components/Player/PlayerFavourit
 interface PlayerButtonTabProps {
     id: string;
     platform: string;
-    nickname?: string;
+    nickname: string;
     aliases: Alias[];
     mobile?: boolean;
 }

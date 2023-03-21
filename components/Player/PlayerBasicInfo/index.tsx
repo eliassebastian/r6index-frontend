@@ -25,9 +25,9 @@ const PlayerBasicInfo = async (props: PlayerBasicInfoProps) => {
                         {!props.mobile && <span className={styles.platform}>{props.platform}</span>}
                     </div>
                 </div>
-                <PlayerButtonTabMobile id={props.id} platform={props.platform} aliases={aliases} mobile={props.mobile} />
+                <PlayerButtonTabMobile nickname={nickname} id={props.id} platform={props.platform} aliases={aliases} mobile={props.mobile} />
             </div>
-            <PlayerButtonTab id={props.id} platform={props.platform} aliases={aliases} mobile={props.mobile} />
+            <PlayerButtonTab nickname={nickname} id={props.id} platform={props.platform} aliases={aliases} mobile={props.mobile} />
         </>
     )
 }
