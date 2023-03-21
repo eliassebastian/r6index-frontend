@@ -19,3 +19,10 @@ export const timeAgo = (value: string | number | Date) => {
     if (interval > 1) { return rtf.format(-Math.floor(interval), 'minute') }
     return rtf.format(-Math.floor(interval), 'second')
 }
+
+export const canPlayerBeUpdated = (lastUpdate: number) => {
+    const oneHourInSeconds = 60 * 60;
+    const currentTime = Math.floor(Date.now() / 1000); // Convert to seconds
+    const timeSinceLastUpdate = currentTime - lastUpdate;
+    return timeSinceLastUpdate > oneHourInSeconds;
+}
