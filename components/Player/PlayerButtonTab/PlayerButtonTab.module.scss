@@ -1,0 +1,24 @@
+
+.tabs {
+    position: relative;
+    display: inline-flex;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    width: 100%;
+
+    @media only screen and (min-width: 1200px) {
+        padding-top: 1.75rem;
+    }
+}
+
+.tabsmobile {
+    position: relative;
+    display: inline-flex;
+    align-self: flex-start;
+    gap: 1rem;
+    //padding-top: 1.5rem;
+
+    @media only screen and (min-width: 1024px) {
+        display: none;
+    }
+}
