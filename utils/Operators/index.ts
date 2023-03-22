@@ -1,5 +1,6 @@
 import { Operator } from "@/types/Operators";
 
+// get the best operator for a player based on their individual stats
 export const calculateBestOperator = (operators: Operator[]) => {
     return operators.reduce((bestOperator, currentStats) => {
         const currentScore = currentStats.roundsPlayed * 0.3

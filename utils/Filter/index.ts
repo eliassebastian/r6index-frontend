@@ -1,6 +1,7 @@
 import type { FilterCondition, SortCriteria } from "@/types/Filter";
 import type { Hit } from "@/types/SearchResults";
 
+// Get nested property from object
 const getNestedProperty = (obj: any, path: string) => {
     const properties = path.split('.');
     let currentObj = obj;
@@ -15,6 +16,7 @@ const getNestedProperty = (obj: any, path: string) => {
     return currentObj;
 }
 
+// Filter and sort data based on filter conditions and sort criteria against a list of players
 export const filterAndSortData = (
     data: Hit[],
     filterConditions: FilterCondition[],
@@ -74,7 +76,8 @@ export const filterAndSortData = (
 
     return filteredData;
 };
-  
+
+// Get min and max values for a object field
 export const minAndMax = (data: any[], field: string) => {
     const fieldValues = data.map(item => getNestedProperty(item, field))
     const min = Math.min.apply(null, fieldValues);
@@ -82,12 +85,14 @@ export const minAndMax = (data: any[], field: string) => {
     return [min, max];
 }
 
+// Get unique values for a object field
 export const uniqueFieldValues = (data: any[], field: string) => {
     const fieldValues = data.map(item => getNestedProperty(item, field))
     const uniqueValues = [...new Set(fieldValues)];
     return uniqueValues;
 }
 
+// Find filter condition by field
 export const findFilter = (filterConditions: FilterCondition[], field: string) => {
     const filter = filterConditions.find((condition) => {
         return condition.field === field;
