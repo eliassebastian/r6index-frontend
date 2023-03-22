@@ -1,7 +1,7 @@
 'use client';
 
 import { FilterCondition } from "@/types/Filter";
-import { convertNumberToTwoDecimals } from "@/utils/Numbers";
+import { calculateStepValue, convertNumberToTwoDecimals } from "@/utils/Numbers";
 import { SliderUnstyled, sliderUnstyledClasses } from "@mui/base";
 import { ReactNode, SyntheticEvent, useState } from "react";
 import styles from "./FilterSlider.module.scss";
@@ -111,6 +111,7 @@ const FilterSlider = (props: FilterSliderProps) => {
     const [value, setValue] = useState<number[]>(Array.isArray(props.currentValue) ? props.currentValue : props.value);
     const minDistance = props.minMax[0] / 10;
     const id = props.name + props.index;
+    const stepValue = calculateStepValue(props.minMax[0], props.minMax[1]);
 
     const onChange = (event: Event, newValue: number | number[], activeThumb: number) => {
         if (!Array.isArray(newValue)) return;    
@@ -147,7 +148,7 @@ const FilterSlider = (props: FilterSliderProps) => {
                     min={props.minMax[0]}
                     max={props.minMax[1]}
                     onChange={onChange}
-                    step={props.minMax[0] / 10}
+                    step={stepValue}
                     slots={{ valueLabel: SliderValueLabel }}
                     valueLabelFormat={(value) => `${convertNumberToTwoDecimals(value)} ${props.title}`}
                     disableSwap
