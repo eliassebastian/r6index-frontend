@@ -17,8 +17,9 @@ interface HeaderHomeProps {
 }
 
 const pageColors = new Map<string, [string, string]>([
-    ["/", ["#f8f6ee", "#732c2f"]],
-    ["/search", ["#3E403D", "#A2A69F"]]
+    ["", ["#f8f6ee", "#732c2f"]],
+    ["search", ["#3E403D", "#A2A69F"]],
+    ["player", ["#f8f6ee", "#732c2f"]]
 ]);
 
 const HeaderHome = ({ children }: HeaderHomeProps) => {
@@ -29,7 +30,8 @@ const HeaderHome = ({ children }: HeaderHomeProps) => {
     const pathname = usePathname();
     
     useLayoutEffect(() => {
-        const color = pageColors.get(pathname);
+        const path = pathname.split("/")[1];
+        const color = pageColors.get(path);
         if (color) {
             startTransition(() => {
                 if (!listRef.current) return;
