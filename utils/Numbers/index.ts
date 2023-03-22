@@ -1,10 +1,17 @@
 
+const isFloat = (num: number) => num % 1 !== 0;
+
 export const convertNumberToTwoDecimals = (number: number) => {
-    // Check if the number is a float
-    if (number % 1 !== 0) {
-      // If it's a float, fix it to two decimal places
-      return number.toFixed(2);
-    }
-    // If it's not a float, return the number as it is
-    return number;
+    return isFloat(number) ? number.toFixed(2) : number;
+}
+
+export const calculateStepValue = (min: number, max: number) => {
+    const isMinOrMaxFloat = isFloat(min) || isFloat(max);
+    if (!isMinOrMaxFloat) return 1;
+
+    const granularity = 100; // Adjust granularity for floats
+    const numberOfSteps = (max - min) * granularity;
+    const stepValue = (max - min) / numberOfSteps;
+
+    return parseFloat(stepValue.toFixed(2));
 }
