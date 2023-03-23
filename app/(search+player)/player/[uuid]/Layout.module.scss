@@ -47,6 +47,7 @@
 
 .full {
     width: 100%;
+    border-bottom: 1px solid #4A4A4A;
 
     @media only screen and (min-width: 1024px) {
         display: none;
@@ -65,4 +66,13 @@
     //     justify-content: space-between;
     //     padding-top: 5px;
     // }
+}
+
+.navigation {
+    @media only screen and (min-width: 1024px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
 }
