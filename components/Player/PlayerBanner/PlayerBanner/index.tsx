@@ -17,7 +17,7 @@ const PlayerBanner = async (props: PlayerBannerProps) => {
     const operatorConfig = operatorsConfig[topOperator.statsDetail];
 
     return (
-        <section className={styles.banner} style={{ backgroundColor: "#4A4A4A" }}>
+        <section className={styles.banner}>
             {/* player details */}
             <div className={styles.player}>
                 {/* @ts-expect-error Async Server Component */}
