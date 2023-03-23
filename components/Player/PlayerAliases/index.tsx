@@ -13,8 +13,8 @@ const PlayerAliases = (props: PlayerAliasesProps) => {
     const [extended, setExtended] = useState(false);
 
     // exclude first alias (current name)
-    // const aliases = props.aliases.slice(1);
-    // if (aliases.length === 0) return null;
+    const aliases = props.aliases.slice(1);
+    if (aliases.length === 0) return null;
 
     const onClick = () => {
         setExtended(value => !value);
@@ -42,31 +42,13 @@ const PlayerAliases = (props: PlayerAliasesProps) => {
             {
                 extended &&
                 <ul className={styles.aliases}>
-                    {/* {
+                    {
                         props.aliases.map((alias, index) => 
                             <li key={`${alias.name}-${index}`} className={styles.alias}>
                                 <span>{alias.name}</span>
                             </li>
                         )
-                    } */}
-                    <li className={styles.alias}>
-                        <span>LeonGids.KOI</span>
-                    </li>
-                    <li className={styles.alias}>
-                        <span>LeonGids.KOI</span>
-                    </li>
-                    <li className={styles.alias}>
-                        <span>LeonGids.KOI</span>
-                    </li>
-                    <li className={styles.alias}>
-                        <span>LeonGids.KOI</span>
-                    </li>
-                    <li className={styles.alias}>
-                        <span>LeonGids.KOI</span>
-                    </li>
-                    <li className={styles.alias}>
-                        <span>LeonGids.KOI</span>
-                    </li>
+                    }
                 </ul>
             }
         </div>
