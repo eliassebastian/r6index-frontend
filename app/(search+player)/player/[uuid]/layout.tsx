@@ -3,6 +3,7 @@ import PlayerBannerLoading from '@/components/Player/PlayerBanner/PlayerBannerLo
 import PlayerBasicInfo from '@/components/Player/PlayerBasicInfo';
 import { PlayerButtonTabMobile } from '@/components/Player/PlayerButtonTab';
 import PlayerFadeBackground from '@/components/Player/PlayerFadeBackground';
+import PlayerNavigation from '@/components/Player/PlayerNavigation';
 import { Suspense } from 'react';
 import styles from './Layout.module.scss';
 
@@ -24,6 +25,10 @@ export default function Layout({ children, params }: { children: React.ReactNode
                             {/* @ts-expect-error Async Server Component */}
                             <PlayerBasicInfo id={params.uuid} platform={"uplay"} mobile />
                         </Suspense>
+                    </div>
+                    <div className={styles.navigation}>
+                        <PlayerNavigation slug={params.uuid}/>
+
                     </div>
                 </section>
             </div>
