@@ -2,16 +2,18 @@
     overflow: hidden;
     position: fixed;
     border-radius: 0;
-    bottom: 0;
+    bottom: -54.5px;
     left: 0;
     width: 100%;
-    background-color: #4A4A4A;
+    background-color: #424242;
+    transition: bottom 0.2s;
     
     @media only screen and (min-width: 1024px) {
         position: relative;
         width: auto;
         border-radius: 1rem;
         padding: 1rem;
+        bottom: 0 !important;
     }
 }
 
@@ -56,11 +58,12 @@
     font-size: 1.5rem;
     font-family: var(--font-inter);
     font-weight: 600;
-    transition: color .2s ease, opacity .2s ease;
+    transition: color .2s ease, opacity .2s ease, transform .2s ease;
     outline: none;
     cursor: pointer;
     text-transform: uppercase;
     opacity: 0.8;
+    scale: 1;
 
     &:hover {
         opacity: 0.9;
@@ -71,6 +74,10 @@
     opacity: 1;
     color: var(--color-ashwhite);
 
+    @media only screen and (max-width: 1023px) {
+        scale: 1.05;
+    }
+        
     &:hover {
         opacity: 1 !important;
     }
