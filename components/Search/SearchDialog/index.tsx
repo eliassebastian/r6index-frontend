@@ -1,13 +1,15 @@
 'use client';
 
 import SearchDialogContext from '@/context/SearchDialogContext';
+import dynamic from 'next/dynamic';
 import { useContext, useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
 import SearchBar from '../SearchBar';
-import SearchFavourites from '../SearchFavourites';
 import SearchRecentSearches from '../SearchRecentSearches';
 import SearchRow from '../SearchRow';
 import styles from './SearchDialog.module.scss';
+
+const SearchFavourites = dynamic(() => import('../SearchFavourites'), { ssr: false });
 
 const SearchDialog = () => {
     const { isVisible, setVisible } = useContext(SearchDialogContext);
