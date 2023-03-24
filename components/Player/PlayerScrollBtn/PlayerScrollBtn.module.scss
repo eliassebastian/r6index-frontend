@@ -1,0 +1,37 @@
+
+.btn {
+
+    display: none;
+
+    @media (min-width: 1024px) {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        color: var(--color-az-cream);
+        font-size: 1.15rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        font-family: var(--font-inter);
+    }
+}
+
+.icon {
+    display: inline-block;
+    transform: rotate(0deg);
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0ms;
+    transition-property: transform;
+    height: 2rem;
+    width: 2rem;
+    color: var(--color-az-cream);
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
