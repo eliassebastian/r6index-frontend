@@ -48,7 +48,7 @@ const HeaderHome = ({ children }: HeaderHomeProps) => {
                     <Logo full color={color[0]} background={color[1]}/>
                 </Link>
                 {
-                    pathname === "/search" && 
+                    (pathname === "/search" || pathname.startsWith("/player")) &&
                     <div className={styles.flex}>
                         <div className={styles.searchbar}>
                             <SearchBar/>
