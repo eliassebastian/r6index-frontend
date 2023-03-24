@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './PlayerNavigation.module.scss';
 
 const PlayerNavigationTabs: { [key: string]: [ string, number ] } = {
@@ -16,11 +16,36 @@ const PlayerNavigationTabs: { [key: string]: [ string, number ] } = {
 
 const PlayerNavigation = (props: { slug: string }) => {
 
+    const containerRef = useRef<HTMLDivElement>(null);
     const navigationRef = useRef<HTMLUListElement>(null);
     const tabRef = useRef<HTMLDivElement>(null);
     const selectedSegment = useSelectedLayoutSegment();
     const href = `/player/${props.slug}`;
     const [tab, setTab] = useState(0);
+
+    useEffect(() => {
+        let lastScrollPosition = window.pageYOffset;
+
+        const scroll = (e: Event) => {
+            if (!containerRef.current) return;
+            if (window.innerWidth > 1023) return
+
+            const currentScrollPosition = window.pageYOffset;
+            if (currentScrollPosition < lastScrollPosition) {
+                containerRef.current.style.bottom = '-54.5px';
+            } else {
+                containerRef.current.style.bottom = '0px';
+            }
+            
+            lastScrollPosition = currentScrollPosition;
+        }
+
+        window.addEventListener("scroll", scroll);
+
+        return () => {
+            window.removeEventListener("scroll", scroll);
+        }
+    }, [])
 
     useLayoutEffect(() => {
         const active = selectedSegment === null ? "overview" : selectedSegment;
@@ -40,7 +65,7 @@ const PlayerNavigation = (props: { slug: string }) => {
     // Overview / Summary / Operators / Maps / Weapons / Trends
 
     return (
-        <div className={styles.navigation}>
+        <div ref={containerRef} className={styles.navigation}>
             <div ref={tabRef} className={styles.background_tab}>
             </div>
             <ul ref={navigationRef} className={styles.navigation_list}>
