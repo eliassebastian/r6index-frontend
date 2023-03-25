@@ -1,0 +1,14 @@
+
+.page {
+    position: relative;
+    display: grid;
+    background-color: aliceblue;
+    grid-template-columns: 0.4fr 0.3fr 0.3fr;
+    grid-template-rows: 1fr 0.15fr 1fr;
+
+    //  summary / operators / weapons / maps / trends
+    grid-template-areas: 
+        "summary summary trends" 
+        "summary summary operators" 
+        "maps weapons oprators";    
+}
