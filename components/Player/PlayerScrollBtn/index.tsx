@@ -6,6 +6,7 @@ import styles from "./PlayerScrollBtn.module.scss";
 const PlayerScrollBtn = () => {
     const btnRef = useRef<HTMLButtonElement>(null);
     const [scrollState, setScrollState] = useState(false);
+    
     const onClick = () => {
         if (!btnRef.current) return;
 
