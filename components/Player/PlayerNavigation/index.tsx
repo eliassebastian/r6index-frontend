@@ -31,9 +31,12 @@ const PlayerNavigation = (props: { slug: string }) => {
             if (window.innerWidth > 1023) return
 
             const currentScrollPosition = window.pageYOffset;
+            const isAtBottom = (window.innerHeight + currentScrollPosition) >= document.body.offsetHeight;
+            
             if (currentScrollPosition < lastScrollPosition) {
                 containerRef.current.style.bottom = '-54.5px';
             } else {
+                if (currentScrollPosition < 100 || isAtBottom) return;
                 containerRef.current.style.bottom = '0px';
             }
             
