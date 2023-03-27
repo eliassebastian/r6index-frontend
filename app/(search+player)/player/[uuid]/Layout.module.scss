@@ -24,7 +24,11 @@
     align-items: flex-end;
     overflow: hidden;
     background-color: var(--color-seven);
-    height: calc(100vh - 222px);
+    height: calc(100vh - (75px + 2.5rem));
+
+    @media screen and (min-width: 1024px) {
+        height: calc(100vh - (74px + 5rem));
+    }
 }
 
 .container {
@@ -36,12 +40,16 @@
     top: 0;
     left: 0;
     padding: 0 1rem;
-    margin-top: calc(100vh - 222px);
+    margin-top: calc(100vh - (75px + 2.5rem));
     overflow: hidden;
     min-height: calc(100vh - 80px);
 
     @media only screen and (min-width: 768px) {
         padding: 0 3rem;
+    }
+
+    @media only screen and (min-width: 1024px) {
+        margin-top: calc(100vh - (74px + 5rem));
     }
 }
 

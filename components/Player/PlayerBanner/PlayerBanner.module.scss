@@ -11,8 +11,12 @@
     align-items: flex-end;
     overflow: hidden;
     background-color: #4A4A4A;
-    height: calc(100vh - 222px);
+    height: calc(100vh - (75px + 2.5rem));
     transition: background-color 0.2s;
+
+    @media screen and (min-width: 1024px) {
+        height: calc(100vh - (75px + 5rem));
+    }
 }
 
 .player {
