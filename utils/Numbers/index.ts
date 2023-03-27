@@ -3,8 +3,8 @@
 const isFloat = (num: number) => num % 1 !== 0;
 
 // Convert number to two decimals if it is a float
-export const convertNumberToTwoDecimals = (number: number) => {
-    return isFloat(number) ? number.toFixed(2) : number;
+export const convertNumberToTwoDecimals = (number: number, decimal: number = 2) => {
+    return isFloat(number) ? number.toFixed(decimal) : number;
 }
 
 // Calculate step value for range slider based on min and max values and type of values
