@@ -18,6 +18,8 @@ const SummaryCardContent = (props: SummaryCardContentProps) => {
     const ref = useRef<HTMLAnchorElement>(null);
     const config = RankedConfig[props.ranked.rank];
     const linearGradient = `linear-gradient(45deg, ${config.linear[0]}, ${config.linear[1]}, ${config.linear[2]}, ${config.linear[3]})`;
+    const winPercentage = props.ranked.wins / (props.ranked.wins + props.ranked.losses) * 100;
+
     const onMouseMove = (event: MouseEvent<HTMLAnchorElement>) => {
         if (!ref.current) return;
         const rect = ref.current.getBoundingClientRect(), x = event.clientX - rect.left, y = event.clientY - rect.top;
@@ -40,8 +42,8 @@ const SummaryCardContent = (props: SummaryCardContentProps) => {
                         <h3 className={styles.grid_subtitle}>K/D</h3>
                     </div>
                     <div className={styles.grid_content}>
-                        <span className={styles.grid_text}>{convertNumberToTwoDecimals(props.ranked.win_lose_ratio)}</span>
-                        <h3 className={styles.grid_subtitle}>W/L</h3>
+                        <span className={styles.grid_text}>{convertNumberToTwoDecimals(winPercentage, 1)}%</span>
+                        <h3 className={styles.grid_subtitle}>Win Rate</h3>
                     </div>
                     <div className={styles.grid_content}>
                         <span className={styles.grid_text}>{convertNumberToTwoDecimals(props.summary.all[0].roundsWithKOST.value * 100, 1)}%</span>
