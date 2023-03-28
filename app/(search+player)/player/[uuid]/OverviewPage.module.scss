@@ -2,13 +2,14 @@
 .page {
     position: relative;
     display: grid;
-    background-color: aliceblue;
     grid-template-columns: 0.4fr 0.3fr 0.3fr;
     grid-template-rows: 1fr 0.15fr 1fr;
-
     //  summary / operators / weapons / maps / trends
-    grid-template-areas: 
-        "summary summary trends" 
-        "summary summary operators" 
-        "maps weapons oprators";    
+    grid-template-areas: "summary summary maps" "summary summary operators" "trends weapons operators";
+    row-gap: 1.5rem;
+    column-gap: 1.5rem;
+    padding-bottom: 3rem;
+    width: 100%;
+    //min-height: 800px;
+    min-height: 700px;      
 }
