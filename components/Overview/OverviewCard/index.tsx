@@ -11,9 +11,9 @@ interface OverviewCardProps {
 }
 
 const OverviewCard = (props: OverviewCardProps) => {
-    const ref = useRef<HTMLAnchorElement>(null);
+    const ref = useRef<HTMLDivElement>(null);
 
-    const onMouseMove = useCallback((event: MouseEvent<HTMLAnchorElement>) => {
+    const onMouseMove = useCallback((event: MouseEvent<HTMLDivElement>) => {
         if (!ref.current) return;
         const rect = ref.current.getBoundingClientRect(), x = event.clientX - rect.left, y = event.clientY - rect.top;
 
@@ -22,16 +22,15 @@ const OverviewCard = (props: OverviewCardProps) => {
     }, []);
 
     return (
-        <Link 
+        <div 
             ref={ref}
-            href={`/player/${props.uuid}/${props.path}`}
             className={`${styles.card} ${styles[props.path]}`}
             onMouseMove={onMouseMove}
         >
             <div className={styles.wrapper}>
                 {props.children}
             </div>
-        </Link>
+        </div>
     )
 }
 
