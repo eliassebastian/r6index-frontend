@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import { MouseEvent, useRef } from "react";
 import styles from "./SummaryCardRankImage.module.scss";
