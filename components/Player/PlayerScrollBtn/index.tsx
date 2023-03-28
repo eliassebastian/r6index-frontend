@@ -14,7 +14,7 @@ const PlayerScrollBtn = () => {
         if (!container) return;
 
         if (!scrollState) {
-            container.scrollIntoView({ behavior: "smooth" });
+            window.scrollTo({ top: container.offsetTop - 100, behavior: "smooth" });
         } else {
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
