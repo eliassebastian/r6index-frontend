@@ -1,6 +1,6 @@
-import type { Maps } from "../Maps";
+import type { Map } from "../Maps";
 import type { OperatorSide } from "../Operators";
-import type { Weapons } from "../Weapons";
+import type { Weapon } from "../Weapons";
 
 export type PlayerResponse = {
     status:   string;
@@ -19,12 +19,12 @@ export type PlayerProfile = {
     aliases:    Alias[];
     xp:         number;
     level:      number;
-    summary:    Summary;
-    ranked:     Ranked[];
-    weapons:    Weapons;
-    maps:       Maps;
-    operators:  OperatorSide;
-    trends:     Trends;
+    summary:    Summary
+    ranked:     Ranked
+    weapons:    Weapon[]
+    maps:       Map[]
+    operators:  OperatorSide
+    trends:     Trends
 }
 
 export type Alias = {
@@ -33,10 +33,6 @@ export type Alias = {
 }
 
 export type DetailedValue = {
-    value: number;
-}
-
-export type HeadshotAccuracy = {
     value: number;
 }
 
@@ -59,10 +55,6 @@ export type Ranked = {
 }
 
 export type Summary = {
-    all: SummaryAll[];
-}
-
-export type SummaryAll = {
     openingKills:           number;
     openingDeaths:          number;
     trades:                 number;
