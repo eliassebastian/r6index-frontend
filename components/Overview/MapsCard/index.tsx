@@ -1,6 +1,6 @@
 import { fetchPlayer } from "@/components/Player/fetchPlayer";
 import { MapConfig } from "@/configs/Maps";
-import { convertNumberToTwoDecimals } from "@/utils/Numbers";
+import { convertNumberToTwoDecimals, removeSubstring } from "@/utils/Numbers";
 import { calculateBestMap } from "@/utils/Ubisoft";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,7 +34,7 @@ const MapsCard = async (props: MapsCardProps) => {
             </div> */}
             <div className={styles.header}>
                 <h2 className={styles.title}>TOP MAP</h2>
-                <h3 className={styles.mapName}>{topMap.statsDetail}</h3>
+                <h3 className={styles.mapName}>{removeSubstring(topMap.statsDetail, "V2")}</h3>
             </div>
             <div className={styles.grid}>
                 <div className={styles.grid_content} >

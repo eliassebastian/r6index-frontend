@@ -18,3 +18,9 @@ export const calculateStepValue = (min: number, max: number) => {
 
     return parseFloat(stepValue.toFixed(2));
 }
+
+// Remove substring from string
+export const removeSubstring = (mainString: string, substringToRemove: string) => {
+    const index = mainString.indexOf(substringToRemove);
+    return index !== -1 ? mainString.slice(0, index) + mainString.slice(index + substringToRemove.length) : mainString;
+}
