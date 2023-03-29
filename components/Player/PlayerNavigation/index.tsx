@@ -27,12 +27,11 @@ const PlayerNavigation = (props: { slug: string }) => {
         let lastScrollPosition = window.pageYOffset;
 
         const scroll = (e: Event) => {
-            if (!containerRef.current) return;
-            if (window.innerWidth > 1023) return
+            if (!containerRef.current || window.innerWidth > 1023) return;
 
             const currentScrollPosition = window.pageYOffset;
             const isAtBottom = (window.innerHeight + currentScrollPosition) >= document.body.offsetHeight;
-            
+
             if (currentScrollPosition < lastScrollPosition) {
                 containerRef.current.style.bottom = '-54.5px';
             } else {
@@ -66,7 +65,6 @@ const PlayerNavigation = (props: { slug: string }) => {
     }, [tab])
 
     // Overview / Summary / Operators / Maps / Weapons / Trends
-
     return (
         <div ref={containerRef} className={styles.navigation}>
             <div ref={tabRef} className={styles.background_tab}>
