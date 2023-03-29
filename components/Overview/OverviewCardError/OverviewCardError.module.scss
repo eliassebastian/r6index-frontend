@@ -1,6 +1,7 @@
 
 .container {
 
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,5 +9,44 @@
     z-index: 10;
     width: 100%;
     min-height: 100%;
+    gap: 1rem;
 
+}
+
+.icon {
+    width: 5rem;
+    height: 5rem;
+    //color: var(--color-royalblack);
+    color: var(--color-az-cream);
+    background-color: #636363;
+    border-radius: 100%;
+    padding: 1rem;
+}
+
+.text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-az-cream);
+    text-transform: uppercase;
+    opacity: 0.8;
+    letter-spacing: 0.05em;
+}
+
+.button {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-az-cream);
+    text-transform: uppercase;
+    //opacity: 0.8;
+    letter-spacing: 0.05em;
+    background-color: var(--bg-darkgray);
+    border-radius: 5rem;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }
