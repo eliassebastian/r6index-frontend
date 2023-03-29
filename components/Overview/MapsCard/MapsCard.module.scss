@@ -20,18 +20,6 @@
     }
 }
 
-.weapon {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 290/100;
-    //margin: 3rem 0;
-    margin: 2rem 0;
-
-    img {
-        margin: 0 auto;
-    }
-}
-
 .image_wrapper {
     position: relative;
     width: 100%;
@@ -45,7 +33,15 @@
     }
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .title {
+    position: relative;
     color: var(--color-az-cream);
     font-size: 2rem;
     font-weight: 800;
@@ -54,26 +50,13 @@
     opacity: 0.8;
 }
 
-.weaponName, .weaponType {
-    display: inline-block;
-}
-
-.weaponName {
+.mapName {
+    position: relative;
     color: var(--color-az-cream);
     font-size: 2.5rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: .05em;
-}
-
-.weaponType {
-    color: var(--color-az-cream);
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    margin-left: 1rem;
-    opacity: 0.5;
 }
 
 .grid {
