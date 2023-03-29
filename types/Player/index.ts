@@ -19,12 +19,12 @@ export type PlayerProfile = {
     aliases:    Alias[];
     xp:         number;
     level:      number;
-    summary:    Summary
-    ranked:     Ranked
-    weapons:    Weapon[]
-    maps:       Map[]
-    operators:  OperatorSide
-    trends:     Trends
+    summary:    Summary;
+    ranked:     Ranked;
+    weapons:    Weapon[];
+    maps:       Map[];
+    operators:  OperatorSide;
+    trends:     Trends;
 }
 
 export type Alias = {
