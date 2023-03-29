@@ -13,7 +13,7 @@ const SearchResultsGridItem = (props: { info: Hit, query: string }) => {
     // in case ubisoft returns a ranked array with no data
     let rank = 'Error: No Rank'
     if (props.info.ranked) {
-        rank = props.info.ranked[0].rank_text
+        rank = props.info.ranked.rank_text;
     }
 
     return (
