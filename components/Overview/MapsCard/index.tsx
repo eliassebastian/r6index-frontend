@@ -32,9 +32,9 @@ const MapsCard = async (props: MapsCardProps) => {
             {/* <div className={styles.image_wrapper}>
                 <Image src={mapConfig.image} alt={`${ topMap.statsDetail } map image`} fill priority />
             </div> */}
-            <div>
+            <div className={styles.header}>
                 <h2 className={styles.title}>TOP MAP</h2>
-                <span className={styles.weaponName}>{topMap.statsDetail}</span>
+                <h3 className={styles.mapName}>{topMap.statsDetail}</h3>
             </div>
             <div className={styles.grid}>
                 <div className={styles.grid_content} >
