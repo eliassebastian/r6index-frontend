@@ -1,0 +1,111 @@
+
+.card {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    padding: 3rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //align-items: center;
+    z-index: 10;
+
+    &:hover {
+        .image_wrapper {
+            filter: grayscale(0%);
+            scale: 1.05;
+        }
+    }
+}
+
+.weapon {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 290/100;
+    //margin: 3rem 0;
+    margin: 2rem 0;
+
+    img {
+        margin: 0 auto;
+    }
+}
+
+.image_wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 307/172;
+    filter: grayscale(80%);
+
+    img {
+        object-fit: contain;
+        border-radius: 1rem;
+        //object-position: -80%;
+    }
+}
+
+.title {
+    color: var(--color-az-cream);
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    opacity: 0.8;
+}
+
+.weaponName, .weaponType {
+    display: inline-block;
+}
+
+.weaponName {
+    color: var(--color-az-cream);
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.weaponType {
+    color: var(--color-az-cream);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-left: 1rem;
+    opacity: 0.5;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    margin-bottom: 4.5rem;
+    row-gap: 1rem;
+}
+
+.grid_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid_text {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: var(--font-inter);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--color-cream);
+    line-height: 1;
+    opacity: .8;
+}
+
+.grid_subtitle {
+    color: var(--color-az-cream);
+    font-weight: 400;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    opacity: .8;
+}
