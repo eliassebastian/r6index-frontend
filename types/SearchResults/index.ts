@@ -21,7 +21,7 @@ export type Hit = {
     nickname:   string;
     platform:   string;
     profileId:  string;
-    ranked:     Ranked[];
+    ranked:     Ranked;
     userId:     string;
 }
 
