@@ -44,7 +44,7 @@ const HeaderHome = ({ children }: HeaderHomeProps) => {
     return (
         <header className={styles.header}>
             <div className={styles.row}>
-                <Link className={styles.logo} href={"/"}>
+                <Link className={styles.logo} href={"/"} scroll>
                     <Logo full color={color[0]} background={color[1]}/>
                 </Link>
                 {
