@@ -5,7 +5,7 @@ import OverviewCard from '@/components/Overview/OverviewCard';
 import OverviewCardError from '@/components/Overview/OverviewCardError';
 import SummaryCard from '@/components/Overview/SummaryCard';
 import TrendsCard from '@/components/Overview/Trends';
-import WeaponsCard from '@/components/Overview/Weapons';
+import WeaponsCard from '@/components/Overview/WeaponsCard';
 import { Suspense } from 'react';
 import styles from './OverviewPage.module.scss';
 
@@ -26,7 +26,12 @@ export default function Overview({ params }: { params: { uuid: string } }) {
                 </ErrorBoundary>
             </OverviewCard>
             <OverviewCard uuid={params.uuid} path={"weapons"}>
-
+                <ErrorBoundary fallback={<OverviewCardError />} >
+                    <Suspense>
+                        {/* @ts-expect-error Async Server Component */}
+                        <WeaponsCard uuid={params.uuid} />
+                    </Suspense>
+                </ErrorBoundary>
             </OverviewCard>
             <OverviewCard uuid={params.uuid} path={"operators"}>
 
