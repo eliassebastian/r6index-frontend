@@ -30,6 +30,7 @@ const HeaderHome = ({ children }: HeaderHomeProps) => {
     const pathname = usePathname();
     
     useLayoutEffect(() => {
+        if (!pathname) return;
         const path = pathname.split("/")[1];
         const color = pageColors.get(path);
         if (color) {
@@ -48,7 +49,7 @@ const HeaderHome = ({ children }: HeaderHomeProps) => {
                     <Logo full color={color[0]} background={color[1]}/>
                 </Link>
                 {
-                    (pathname === "/search" || pathname.startsWith("/player")) &&
+                    (pathname && (pathname === "/search" || pathname.startsWith("/player"))) &&
                     <div className={styles.flex}>
                         <div className={styles.searchbar}>
                             <SearchBar/>
@@ -58,7 +59,7 @@ const HeaderHome = ({ children }: HeaderHomeProps) => {
             </div>
             <nav ref={listRef} className={styles.list} style={ { color: color[0] } }>
                 {
-                    (pathname === "/search" || pathname.startsWith("/player")) &&
+                    (pathname && (pathname === "/search" || pathname.startsWith("/player"))) &&
                     <div className={styles.xl_hide}>
                         <SearchDialog>
                             {/* <HeaderHomeButton desktop> */}
