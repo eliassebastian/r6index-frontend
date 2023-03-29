@@ -1,6 +1,6 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
-import MapsCard from '@/components/Overview/Map';
-import OperatorsCard from '@/components/Overview/Operators';
+import MapsCard from '@/components/Overview/MapsCard';
+import OperatorsCard from '@/components/Overview/OperatorsCard';
 import OverviewCard from '@/components/Overview/OverviewCard';
 import OverviewCardError from '@/components/Overview/OverviewCardError';
 import SummaryCard from '@/components/Overview/SummaryCard';
@@ -34,13 +34,28 @@ export default function Overview({ params }: { params: { uuid: string } }) {
                 </ErrorBoundary>
             </OverviewCard>
             <OverviewCard uuid={params.uuid} path={"operators"}>
-
+                <ErrorBoundary fallback={<OverviewCardError />} >
+                    <Suspense>
+                        {/* @ts-expect-error Async Server Component */}
+                        <OperatorsCard uuid={params.uuid} />
+                    </Suspense>
+                </ErrorBoundary>
             </OverviewCard>
             <OverviewCard uuid={params.uuid} path={"maps"}>
-
+                <ErrorBoundary fallback={<OverviewCardError />} >
+                    <Suspense>
+                        {/* @ts-expect-error Async Server Component */}
+                        <MapsCard uuid={params.uuid} />
+                    </Suspense>
+                </ErrorBoundary>
             </OverviewCard>
             <OverviewCard uuid={params.uuid} path={"trends"}>
-
+                <ErrorBoundary fallback={<OverviewCardError />} >
+                    <Suspense>
+                        {/* @ts-expect-error Async Server Component */}
+                        <TrendsCard uuid={params.uuid} />
+                    </Suspense>
+                </ErrorBoundary>
             </OverviewCard>
         </div>
     )
