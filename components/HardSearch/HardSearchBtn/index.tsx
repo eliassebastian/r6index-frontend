@@ -16,8 +16,8 @@ const HardSearchBtn = () => {
         if (!isFetching) return;
         const abortController = new AbortController();
 
-        const name = searchParams.get('q');
-        const platform = searchParams.get('p');
+        const name = searchParams?.get('q');
+        const platform = searchParams?.get('p');
 
         if (!name || !platform) {
             toast('Invalid Name/Platform Provided', {})
