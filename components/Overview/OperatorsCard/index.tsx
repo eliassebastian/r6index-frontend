@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./OperatorsCard.module.scss";
 import { convertNumberToTwoDecimals } from "@/utils/Numbers";
+import OverviewEmpty from "../OverviewEmpty";
 
 interface OperatorsCardProps {
     uuid: string;
@@ -15,7 +16,7 @@ const OperatorsCard = async (props: OperatorsCardProps) => {
 
     //check if data is available, if not, throw error for error boundary to catch
     const isOperatorsNotAvailable = operators == null;
-    if (isOperatorsNotAvailable) throw new Error("Operator Data Currently Not Available");
+    if (isOperatorsNotAvailable) return <OverviewEmpty message="Operator Data Currently Unavailable" subtitle="This could be due to not enough games played, New Season Starting, or Ubisoft Server Issues."/>;
 
     //calculate top operator
     const topOperator = operators && calculateBestOperator([...operators.attacker, ...operators.defender])

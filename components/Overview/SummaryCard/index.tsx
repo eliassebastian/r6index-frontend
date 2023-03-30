@@ -2,6 +2,7 @@ import { fetchPlayer } from "@/components/Player/fetchPlayer";
 import { RankedConfig } from "@/configs/Ranks";
 import { convertNumberToTwoDecimals } from "@/utils/Numbers";
 import Link from "next/link";
+import OverviewEmpty from "../OverviewEmpty";
 import styles from "./SummaryCard.module.scss";
 import SummaryCardRankImage from "./SummaryCardRankImage";
 
@@ -15,7 +16,7 @@ const SummaryCard = async (props: SummaryCardProps) => {
     const isRankedNotAvailable = ranked == null; 
     const isSummaryNotAvailable = summary == null;
 
-    if (isRankedNotAvailable || isSummaryNotAvailable) throw new Error("Ranked Information Currently Not Available");
+    if (isRankedNotAvailable || isSummaryNotAvailable) return <OverviewEmpty message="Ranked Data Currently Unavailable" subtitle="This could be due to not enough games played, New Season Starting, or Ubisoft Server Issues."/>;
 
     const config = RankedConfig[ranked.rank];
     const linearGradient = `linear-gradient(45deg, ${config.linear[0]}, ${config.linear[1]}, ${config.linear[2]}, ${config.linear[3]})`;

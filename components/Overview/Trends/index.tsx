@@ -1,5 +1,8 @@
 import { fetchPlayer } from "@/components/Player/fetchPlayer";
+import Link from "next/link";
 import TrendsCardContent from "./TrendsCardContent";
+import styles from "./TrendsCard.module.scss";
+import OverviewEmpty from "../OverviewEmpty";
 
 interface MapsCardProps {
     uuid: string;
@@ -12,9 +15,16 @@ const TrendsCard = async (props: MapsCardProps) => {
     //const topOperator = maps && calculateBestOperator([...operators.attacker, ...operators.defender])
 
     //TODO: return empty div if data is not available
-    if (isTrendsNotAvailable) throw new Error("Trends Data currently unavailable");
+    if (isTrendsNotAvailable) return <OverviewEmpty message="Performance Data Currently Unavailable" subtitle="This could be due to not enough games played, New Season Starting, or Ubisoft Server Issues."/>;
 
-    return <TrendsCardContent uuid={props.uuid} />
+    return (
+        <Link 
+            href={`/player/${props.uuid}/trends`}
+            className={styles.card}
+        >  
+            <TrendsCardContent uuid={props.uuid} />
+        </Link>
+    )
 }
 
 export default TrendsCard;

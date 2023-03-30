@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./WeaponsCard.module.scss";
 import { convertNumberToTwoDecimals } from "@/utils/Numbers";
+import OverviewEmpty from "../OverviewEmpty";
 
 interface WeaponCardProps {
     uuid: string;
@@ -14,7 +15,7 @@ const WeaponsCard = async (props: WeaponCardProps) => {
     const { data: { weapons } } = await fetchPlayer(props.uuid, "uplay");
 
     const isWeaponsNotAvailable = weapons == null;
-    if (isWeaponsNotAvailable) throw new Error("Weapon Data Currently Not Available")
+    if (isWeaponsNotAvailable) return <OverviewEmpty message="Weapon Data Currently Unavailable" subtitle="This could be due to not enough games played, New Season Starting, or Ubisoft Server Issues."/>;
 
     const topWeapon = weapons && calculateBestWeapon(weapons)
     const weaponConfig = weaponsConfig[topWeapon.weaponName];

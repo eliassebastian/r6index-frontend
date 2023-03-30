@@ -4,6 +4,7 @@ import { convertNumberToTwoDecimals, removeSubstring } from "@/utils/Numbers";
 import { calculateBestMap } from "@/utils/Ubisoft";
 import Image from "next/image";
 import Link from "next/link";
+import OverviewEmpty from "../OverviewEmpty";
 import styles from "./MapsCard.module.scss";
 
 interface MapsCardProps {
@@ -11,14 +12,10 @@ interface MapsCardProps {
 }
 
 const MapsCard = async (props: MapsCardProps) => {
-
     const { data: { maps } } = await fetchPlayer(props.uuid, "uplay");
-
-    console.log(maps);
-
     // check if maps is null, if it is, throw an error for error boundary to catch 
     const isMapsNotAvailable = maps == null;
-    if (isMapsNotAvailable) throw new Error("Maps Data is current unavailable");
+    if (isMapsNotAvailable) return <OverviewEmpty message="Map Data Currently Unavailable" subtitle="This could be due to not enough games played, New Season Starting, or Ubisoft Server Issues."/>;
 
     const topMap = calculateBestMap(maps);
     const mapConfig = MapConfig[topMap.statsDetail];
