@@ -7,6 +7,8 @@ import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import styles from './Search.module.scss';
 
+export const dynamic = 'force-dynamic';
+
 interface SearchParams {
     q: string;
     p: string;
