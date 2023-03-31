@@ -15,13 +15,14 @@ interface PlayerButtonTabProps {
     nickname: string;
     aliases: Alias[];
     mobile?: boolean;
+    lastUpdate: number;
 }
 
 export const PlayerButtonTab = (props: PlayerButtonTabProps) => {
     const [activeTab, setActiveTab] = useState(false);
     return (
         <div className={styles.tabs}>
-            {!props.mobile && !activeTab && <PlayerUpdate/>}
+            {!props.mobile && !activeTab && <PlayerUpdate id={props.id} platform={props.platform} lastUpdate={props.lastUpdate} />}
             <PlayerAliases aliases={props.aliases} expanded={setActiveTab}/>
             {!props.mobile && !activeTab && <PlayerFavourite id={props.id} name={props.nickname} />}
         </div>
@@ -31,7 +32,7 @@ export const PlayerButtonTab = (props: PlayerButtonTabProps) => {
 export const PlayerButtonTabMobile = (props: PlayerButtonTabProps) => {
     return (
         <div className={styles.tabsmobile}>
-            <PlayerUpdate/>
+            <PlayerUpdate id={props.id} platform={props.platform} lastUpdate={props.lastUpdate} />
             <PlayerFavourite id={props.id} name={props.nickname} />
         </div>
     )
