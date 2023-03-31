@@ -1,8 +1,10 @@
 'use client';
 
 import SearchDialogContext from '@/context/SearchDialogContext';
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicEffect';
 import dynamic from 'next/dynamic';
-import { useContext, useLayoutEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { useContext } from 'react';
 import { createPortal } from 'react-dom';
 import SearchBar from '../SearchBar';
 import SearchRecentSearches from '../SearchRecentSearches';
@@ -13,12 +15,14 @@ const SearchFavourites = dynamic(() => import('../SearchFavourites'), { ssr: fal
 
 const SearchDialog = () => {
     const { isVisible, setVisible } = useContext(SearchDialogContext);
+    const pathname = usePathname();
 
     const closeDialog = () => {
         setVisible(false);
     }
 
-    useLayoutEffect(() => {
+    //prevent scrolling when dialog is open
+    useIsomorphicLayoutEffect(() => {
         if (!isVisible) return;
 
         document.body.style.overflow = 'hidden';
@@ -29,6 +33,12 @@ const SearchDialog = () => {
             document.body.style.position = '';
         }
     }, [isVisible]);
+
+    //close dialog when pathname changes
+    useIsomorphicLayoutEffect(() => {
+        if (!isVisible) return;
+        setVisible(false);
+    }, [pathname]);
 
     if (!isVisible) return null;
 

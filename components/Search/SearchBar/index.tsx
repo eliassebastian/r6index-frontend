@@ -1,8 +1,9 @@
 'use client';
 
+import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicEffect";
 import { usePlatformStore } from "@/stores/PlatformStore";
 import type { Platform } from "@/types/Platform";
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import styles from './SearchBar.module.scss';
 
 interface SearchBarProps {
@@ -38,7 +39,7 @@ const SearchBar = ({ onClose }: SearchBarProps) => {
     }
 
     //platform tabs animation
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (!platformBgRef.current || !platformsRef.current) return
 
         const btn = platformsRef.current?.children[platform] as HTMLButtonElement;

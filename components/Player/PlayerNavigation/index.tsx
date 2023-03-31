@@ -1,8 +1,9 @@
 'use client';
 
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicEffect';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './PlayerNavigation.module.scss';
 
 const PlayerNavigationTabs: { [key: string]: [ string, number ] } = {
@@ -23,6 +24,7 @@ const PlayerNavigation = (props: { slug: string }) => {
     const href = `/player/${props.slug}`;
     const [tab, setTab] = useState(0);
 
+    // Handle mobile navigation bar on scroll
     useEffect(() => {
         let lastScrollPosition = window.pageYOffset;
 
@@ -49,14 +51,15 @@ const PlayerNavigation = (props: { slug: string }) => {
         }
     }, [])
 
-    useLayoutEffect(() => {
+    // Update tab on segment change
+    useIsomorphicLayoutEffect(() => {
         const active = selectedSegment === null ? "overview" : selectedSegment;
         const tab = PlayerNavigationTabs[active];
         setTab(tab[1]);
     }, [selectedSegment])
 
     // Update tab position
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (!tabRef.current || !navigationRef.current) return;
         const btn = navigationRef.current.children[tab] as HTMLAnchorElement;
         tabRef.current.style.transform = `translate(${btn.offsetLeft}px, 10px)`;

@@ -2,10 +2,11 @@
 
 import HeaderHomeButton from "@/components/Buttons/HeaderHomeButton";
 import Logo from "@/components/Logo";
+import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicEffect";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLayoutEffect, useRef, useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import styles from "./HeaderHome.module.scss";
 
 
@@ -29,7 +30,7 @@ const HeaderHome = ({ children }: HeaderHomeProps) => {
     const [color, setColor] = useState<[string, string]>(["#f8f6ee", "#732c2f"]);
     const pathname = usePathname();
     
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (!pathname) return;
         const path = pathname.split("/")[1];
         const color = pageColors.get(path);

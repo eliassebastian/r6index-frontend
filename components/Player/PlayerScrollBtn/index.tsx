@@ -1,6 +1,7 @@
 'use client';
 
-import { useLayoutEffect, useRef, useState } from "react";
+import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicEffect";
+import { useRef, useState } from "react";
 import styles from "./PlayerScrollBtn.module.scss";
 
 const PlayerScrollBtn = () => {
@@ -22,7 +23,7 @@ const PlayerScrollBtn = () => {
         setScrollState(value => !value);
     }
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         if (!btnRef.current) return;
 
         const scroll = () => {
