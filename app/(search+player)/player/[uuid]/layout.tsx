@@ -1,7 +1,6 @@
 import PlayerBanner from '@/components/Player/PlayerBanner/PlayerBanner';
-import PlayerBannerLoading from '@/components/Player/PlayerBanner/PlayerBannerLoading';
 import PlayerBasicInfo from '@/components/Player/PlayerBasicInfo';
-import { PlayerButtonTabMobile } from '@/components/Player/PlayerButtonTab';
+import PlayerBasicInfoLoading from '@/components/Player/PlayerBasicInfo/Loading';
 import PlayerFadeBackground from '@/components/Player/PlayerFadeBackground';
 import PlayerNavigation from '@/components/Player/PlayerNavigation';
 import PlayerScroll from '@/components/Player/PlayerScroll';
@@ -10,13 +9,16 @@ import { Suspense } from 'react';
 import styles from './Layout.module.scss';
 
 export default function Layout({ children, params }: { children: React.ReactNode, params: { uuid: string } }) {
+
+    console.log("Player Layout Rendered");
+
     return (
         <main className={styles.main}>
             <PlayerScroll/>
             <div className={styles.fixed}>
                 {/* Scroll Opacity Client Side Component */}
                 <PlayerFadeBackground/>
-                <Suspense fallback={<PlayerBannerLoading/>}>
+                <Suspense>
                     {/* @ts-expect-error Async Server Component */}
                     <PlayerBanner uuid={params.uuid} />
                 </Suspense>
@@ -24,7 +26,7 @@ export default function Layout({ children, params }: { children: React.ReactNode
             <div className={styles.container}>
                 <section className={styles.container_header}>
                     <div className={styles.full}>
-                        <Suspense fallback={<PlayerBannerLoading/>}>
+                        <Suspense fallback={<PlayerBasicInfoLoading />}>
                             {/* @ts-expect-error Async Server Component */}
                             <PlayerBasicInfo id={params.uuid} platform={"uplay"} mobile />
                         </Suspense>
