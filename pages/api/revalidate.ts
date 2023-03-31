@@ -32,10 +32,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     console.log(`Revalidating player ${id} on ${platform}...`);
-
     try {
-        // force update from api
-        await fetch('http://127.0.0.1:8080/v1/update', {
+        //post update from api
+        const updateResponse = await fetch('http://127.0.0.1:8080/v1/update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,11 +45,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             body: JSON.stringify({"platform": platform, "id": id}),
         });
 
-        // revalidate page with new data
+        console.log(`Update response: ${updateResponse.status} ${updateResponse.statusText}`);
+        //revalidate page with new data
         await res.revalidate(`/player/${id}`);
-        return res.json({ revalidated: true });
+        return res.status(updateResponse.status).json({ revalidated: true });
     } catch (e) {
-        console.error(e);
         return res.status(500).json({ message: 'Error Updating' });
     }
 }

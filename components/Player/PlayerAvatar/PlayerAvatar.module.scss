@@ -9,6 +9,8 @@
     position: absolute;
     width: 10rem;
     height: 10rem;
+    z-index: 0;
+    background-color: var(--color-royalblack);
 }
 
 .bg {
@@ -17,8 +19,8 @@
     height: 10rem;
     //background: linear-gradient(45deg, rgb(255 0 0/85%),rgb(0 0 255/85%),rgb(255 255 0/85%) );
     background: linear-gradient(45deg, var(--color-royalblack),var(--bg-lightgray-accenttwo),var(--color-az-cream) );
-    transform: scale(1.1);
-    animation: animate 3s linear infinite;
+    transform: scale(1);
+    animation: animate 4s linear infinite;
     //filter: blur(10px);
     //backdrop-filter: blur(15px);
     border-radius: 100%;
@@ -35,6 +37,10 @@
     }
 }
 
+.updating {
+    animation: animate 1s linear infinite;
+}
+
 .img_bg {
     position: relative;
     width: 10rem;
@@ -42,6 +48,7 @@
     border-radius: 100%;
     overflow: hidden;
     opacity: 1;
+    background-color: var(--color-royalblack);
 }
 
 @keyframes animate {
