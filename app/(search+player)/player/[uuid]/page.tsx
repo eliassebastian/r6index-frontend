@@ -6,17 +6,21 @@ import OverviewCardError from '@/components/Overview/OverviewCardError';
 import SummaryCard from '@/components/Overview/SummaryCard';
 import TrendsCard from '@/components/Overview/Trends';
 import WeaponsCard from '@/components/Overview/WeaponsCard';
+import { fetchPlayer } from '@/components/Player/fetchPlayer';
 import { Suspense } from 'react';
 import styles from './OverviewPage.module.scss';
 
-export default function Overview({ params }: { params: { uuid: string } }) {
+export const dynamic = 'force-static', dynamicParams = true;
+export function generateStaticParams() {
+    return [];
+}
+
+export default async function Overview({ params }: { params: { uuid: string } }) {
+
+    const data = await fetchPlayer(params.uuid, "uplay");
+
     return (
         <div className={styles.page}>
-            {/* <SummaryCard uuid={params.uuid}/>
-            <WeaponsCard uuid={params.uuid}/>
-            <OperatorsCard uuid={params.uuid}/>
-            <MapsCard uuid={params.uuid}/>
-            <TrendsCard uuid={params.uuid}/> */}
             <OverviewCard uuid={params.uuid} path={"summary"}>
                 <ErrorBoundary fallback={<OverviewCardError />} >
                     <Suspense>
