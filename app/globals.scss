@@ -48,18 +48,21 @@
 
 html {
   font-size: 62.5%;
+  //height: 100%;
 }
 
 html, body {
   height: 100%;
-  overflow-x: hidden;
+  //min-height: 100%;
+  //overflow-x: hidden;
   background-color: var(--bg-lightgray-accenttwo);
-  overflow: unset; 
-  overscroll-behavior: none;
+  // overflow: unset; 
+  // overscroll-behavior: none;
 }
 
 body {
   line-height: 1.5;
+  //height: 100%;
   -webkit-font-smoothing: antialiased;
 }
 
