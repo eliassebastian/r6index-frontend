@@ -1,6 +1,6 @@
 import type { SearchResult } from "@/types/SearchResults";
 
-const getSearch = async (user: string, platform: string) => {
+const fetchSearch = async (user: string, platform: string) => {
     const res = await fetch(`http://127.0.0.1:8080/v1/search?p=${platform}&q=${user}`, { cache: 'no-store' });
 
     if (res.status !== 200) {
@@ -11,4 +11,4 @@ const getSearch = async (user: string, platform: string) => {
     return results;
 }
 
-export default getSearch;
+export default fetchSearch;
