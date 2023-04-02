@@ -3,7 +3,7 @@
 import { useUpdateDataContext } from '@/context/UpdateContext';
 import { canPlayerBeUpdated } from '@/utils/Time';
 import { useRouter } from 'next/navigation';
-import { useEffect, useId } from 'react';
+import { useEffect } from 'react';
 import styles from './PlayerUpdate.module.scss';
 
 interface PlayerUpdateProps {
@@ -13,33 +13,30 @@ interface PlayerUpdateProps {
 }
 
 const PlayerUpdate = (props: PlayerUpdateProps) => {
-    const id = useId();
+    const { updateTimestamp, initiateUpdate, isUpdating, canUpdate, setCanUpdate} = useUpdateDataContext();
     const router = useRouter();
-    const { initiateUpdate, isUpdating, canUpdate, setCanUpdate} = useUpdateDataContext();
-    const canBeUpdated = canPlayerBeUpdated( props.lastUpdate );
+    const canBeUpdated = canPlayerBeUpdated( updateTimestamp ? updateTimestamp : props.lastUpdate );
+
+    console.log("UPDATETIMESTAMPS", updateTimestamp)
 
     const onClick = async () => {
         if (isUpdating || !canBeUpdated) return;
-        const response = await initiateUpdate(id, props.id, props.platform);
-        if (response === 200 || response === 202) {
+        const response = await initiateUpdate(props.id, props.platform);
+        console.log("ONCLICK response", response);
+        if (response === 202) {
+            console.log("refresh");
             router.refresh();
         }
     }
 
     useEffect(() => {
-        //run on initialisation
-        if (canBeUpdated) return 
-
-        const isUpdateable = canPlayerBeUpdated( props.lastUpdate );
-        if (isUpdateable) {
-            setCanUpdate(true);
-            return
-        }
+        //dont run if player page can be updated
+        if (canBeUpdated) return
 
         // run every 60 seconds
         const interval = setInterval(() => {
             console.log( "interval");
-            const isUpdateable = canPlayerBeUpdated( props.lastUpdate );
+            const isUpdateable = canPlayerBeUpdated( updateTimestamp ? updateTimestamp : props.lastUpdate );
             if (isUpdateable) {
                 setCanUpdate(true);
                 return
