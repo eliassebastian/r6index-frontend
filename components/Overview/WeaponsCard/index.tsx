@@ -1,4 +1,3 @@
-import { fetchPlayer } from "@/components/Player/fetchPlayer";
 import { weaponsConfig } from "@/configs/Weapons";
 import { calculateBestWeapon } from "@/utils/Ubisoft";
 import Link from "next/link";
@@ -6,6 +5,7 @@ import Image from "next/image";
 import styles from "./WeaponsCard.module.scss";
 import { convertNumberToTwoDecimals } from "@/utils/Numbers";
 import OverviewEmpty from "../OverviewEmpty";
+import { fetchPlayer } from "@/lib/api/fetchPlayer";
 
 interface WeaponCardProps {
     uuid: string;
