@@ -6,7 +6,7 @@ import OverviewCardError from '@/components/Overview/OverviewCardError';
 import SummaryCard from '@/components/Overview/SummaryCard';
 import TrendsCard from '@/components/Overview/Trends';
 import WeaponsCard from '@/components/Overview/WeaponsCard';
-import { fetchPlayer } from '@/components/Player/fetchPlayer';
+import { fetchPlayer } from '@/lib/api/fetchPlayer';
 import { Suspense } from 'react';
 import styles from './OverviewPage.module.scss';
 

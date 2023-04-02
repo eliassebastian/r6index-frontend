@@ -1,5 +1,5 @@
-import { fetchPlayer } from "@/components/Player/fetchPlayer";
 import { RankedConfig } from "@/configs/Ranks";
+import { fetchPlayer } from "@/lib/api/fetchPlayer";
 import { convertNumberToTwoDecimals } from "@/utils/Numbers";
 import Link from "next/link";
 import OverviewEmpty from "../OverviewEmpty";

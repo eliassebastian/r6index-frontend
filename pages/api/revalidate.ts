@@ -1,5 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+function sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { method, body } = req;
 
@@ -45,10 +49,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             body: JSON.stringify({"platform": platform, "id": id}),
         });
 
+        const json = await updateResponse.json();
+
+        await sleep(500);
         console.log(`Update response: ${updateResponse.status} ${updateResponse.statusText}`);
         //revalidate page with new data
         await res.revalidate(`/player/${id}`);
-        return res.status(updateResponse.status).json({ revalidated: true });
+        await sleep(1000);
+        return res.status(updateResponse.status).json({ revalidated: true, updateTime: json.data.lastUpdate });
     } catch (e) {
         return res.status(500).json({ message: 'Error Updating' });
     }

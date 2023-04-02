@@ -1,5 +1,5 @@
-import { fetchPlayer } from "@/components/Player/fetchPlayer";
 import { MapConfig } from "@/configs/Maps";
+import { fetchPlayer } from "@/lib/api/fetchPlayer";
 import { convertNumberToTwoDecimals, removeSubstring } from "@/utils/Numbers";
 import { calculateBestMap } from "@/utils/Ubisoft";
 import Image from "next/image";

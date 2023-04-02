@@ -1,4 +1,3 @@
-import { fetchPlayer } from "@/components/Player/fetchPlayer";
 import { operatorsConfig } from "@/configs/Operators";
 import { calculateBestOperator } from "@/utils/Ubisoft";
 import Link from "next/link";
@@ -6,6 +5,7 @@ import Image from "next/image";
 import styles from "./OperatorsCard.module.scss";
 import { convertNumberToTwoDecimals } from "@/utils/Numbers";
 import OverviewEmpty from "../OverviewEmpty";
+import { fetchPlayer } from "@/lib/api/fetchPlayer";
 
 interface OperatorsCardProps {
     uuid: string;

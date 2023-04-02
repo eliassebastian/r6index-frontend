@@ -1,5 +1,5 @@
+import { fetchPlayer } from '@/lib/api/fetchPlayer';
 import { timeAgo } from '@/utils/Time';
-import { fetchPlayer } from '../fetchPlayer';
 import PlayerAvatar from '../PlayerAvatar';
 import { PlayerButtonTab, PlayerButtonTabMobile } from '../PlayerButtonTab';
 import styles from './PlayerBasicInfo.module.scss';

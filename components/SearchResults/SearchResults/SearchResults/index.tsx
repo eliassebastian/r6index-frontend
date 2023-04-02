@@ -1,7 +1,7 @@
+import fetchSearch from "@/lib/api/fetchSearch";
 import Filter from "../../Filter/Filter";
 import FilterContextProvider from "../../Filter/FilterContextProvider";
 import SearchAndFilter from "../../SearchAndFilter/SearchAndFilter";
-import getSearch from "../fetchSearch";
 import SearchResultsGrid from "../SearchResultsGrid";
 
 interface SearchResultsProps {
@@ -10,7 +10,7 @@ interface SearchResultsProps {
 }
 
 const SearchResults = async ({ user, platform }: SearchResultsProps) => {
-    const results = await getSearch(user, platform); 
+    const results = await fetchSearch(user, platform); 
     return (
         <FilterContextProvider>
             <SearchAndFilter query={user}>

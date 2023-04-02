@@ -1,8 +1,8 @@
 import { operatorsConfig } from '@/configs/Operators';
+import { fetchPlayer } from '@/lib/api/fetchPlayer';
 import { calculateBestOperator } from '@/utils/Ubisoft';
 import Image from 'next/image';
 import { Suspense } from 'react';
-import { fetchPlayer } from '../../fetchPlayer';
 import PlayerBasicInfo from '../../PlayerBasicInfo';
 import PlayerBasicInfoLoading from '../../PlayerBasicInfo/Loading';
 import PlayerTest from '../../PlayerTest';
