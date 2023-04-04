@@ -3,7 +3,7 @@
 import { FilterCondition } from "@/types/Filter";
 import { calculateStepValue, convertNumberToTwoDecimals } from "@/utils/Numbers";
 import { SliderUnstyled, sliderUnstyledClasses } from "@mui/base";
-import { ReactNode, SyntheticEvent, useState } from "react";
+import { ReactNode, SyntheticEvent, useCallback, useState } from "react";
 import styles from "./FilterSlider.module.scss";
 
 interface FilterSliderProps {
@@ -71,72 +71,55 @@ const css = `
         margin-top: -7px;
     }
 
-    .slider .label {
-        background: unset;
-        background-color: #3c3c3c;
-        display: flex;
-        padding: .5rem;
-        visibility: hidden;
-        color: #fff;
-        border-radius: .5rem;
-        position: absolute;
-        transform: translate(-35%, -140%) scale(0);
-        transition: transform 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        white-space: nowrap;
-    }
-
-    .slider:hover .label {
-        visibility: visible;
-        transform: translate(-35%, -140%) scale(1);
-    }
-
-    .slider:hover .value {
+    .label {
+        font-family: var(--font-inter);
+        font-size: 1.5rem;
+        position: relative;
+        top: -1.5em;
+        right: .5em;
         text-align: center;
+        align-self: center;
+        color: black;
     }
-
 `
 
 const SliderValueLabel = ({ children }: { children: ReactNode }) => {
-    return (
-      <span className="label">
-        <div className="value">{children}</div>
-      </span>
-    );
+    return <span className="label">{children}</span>;
 }
 
 const FilterSlider = (props: FilterSliderProps) => {
     const [value, setValue] = useState<number[]>(Array.isArray(props.currentValue) ? props.currentValue : props.value);
-    const minDistance = props.minMax[0] / 10;
     const id = props.name + props.index;
+    const isMinMaxEqual = props.minMax[0] === props.minMax[1];
+    const minDistance = props.minMax[0] / 10;
     const stepValue = calculateStepValue(props.minMax[0], props.minMax[1]);
 
     const onChange = (event: Event, newValue: number | number[], activeThumb: number) => {
         if (!Array.isArray(newValue)) return;    
         if (activeThumb === 0) {
             setValue([Math.min(newValue[0], value[1] - minDistance), value[1]]);
-        } else {
-            setValue([value[0], Math.max(newValue[1], value[0] + minDistance)]);
+            return 
         }
+
+        setValue([value[0], Math.max(newValue[1], value[0] + minDistance)]);
     }
 
-    const onChangeCommited = (event: Event | SyntheticEvent<Element, Event>, value: number | number[]) =>{
+    const onChangeCommited = useCallback((event: Event | SyntheticEvent<Element, Event>, value: number | number[]) =>{
         if (!Array.isArray(value)) return; 
         if (value[0] === props.minMax[0] && value[1] === props.minMax[1]) {
             props.onRemove(id);
-        } else {
-            props.onRemove(id);
-            props.onAdd({
-                id: id,
-                name: props.name,
-                field: props.field,
-                value: value as [number, number],
-                type: "range"
-            } satisfies FilterCondition)
-        }
-    }
+            return
+        };
+
+        props.onRemove(id);
+        props.onAdd({
+            id: id,
+            name: props.name,
+            field: props.field,
+            value: value as [number, number],
+            type: "range"
+        } satisfies FilterCondition)
+    }, []);
 
     return (
         <div className={styles.wrapper}>
@@ -144,15 +127,18 @@ const FilterSlider = (props: FilterSliderProps) => {
             <div className={styles.inner}>
                 <SliderUnstyled 
                     className="slider"
-                    value={value}
-                    min={props.minMax[0]}
-                    max={props.minMax[1]}
-                    onChange={onChange}
-                    step={stepValue}
+                    value={isMinMaxEqual ? [0, 100] : value}
+                    disabled={isMinMaxEqual}
+                    min={isMinMaxEqual ? 0 : props.minMax[0]}
+                    max={isMinMaxEqual ? 100 : props.minMax[1]}
+                    onChange={isMinMaxEqual ? undefined : onChange}
+                    step={isMinMaxEqual ? undefined : stepValue}
                     slots={{ valueLabel: SliderValueLabel }}
-                    valueLabelFormat={(value) => `${convertNumberToTwoDecimals(value)} ${props.title}`}
+                    valueLabelFormat={(value, index) => 
+                        `${convertNumberToTwoDecimals( isMinMaxEqual ? props.minMax[index] : value )}`
+                    }
                     disableSwap
-                    onChangeCommitted={onChangeCommited}
+                    onChangeCommitted={isMinMaxEqual ? undefined : onChangeCommited}
                 />
             </div>
         </div>
