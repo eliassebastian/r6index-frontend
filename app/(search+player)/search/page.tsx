@@ -1,4 +1,5 @@
 import ErrorBoundary from '@/components/ErrorBoundary';
+import FilterContextProvider from '@/components/SearchResults/Filter/FilterContextProvider';
 import SearchAndFilterLoading from '@/components/SearchResults/SearchAndFilter/SearchAndFilterLoading';
 import SearchResults from '@/components/SearchResults/SearchResults/SearchResults';
 import SearchResultsError from '@/components/SearchResults/SearchResults/SearchResultsError';
@@ -16,20 +17,24 @@ interface SearchParams {
 
 export default function Search({ searchParams }: { searchParams: SearchParams }) {
 
-    if (!searchParams.q) {
-        redirect("/");
-    }
+    console.log("SearchParams: ", searchParams);
+
+    // if (!searchParams.q) {
+    //     redirect("/");
+    // }
 
     return (
         <main className={styles.main}>
             <div className={styles.container}>
-                <ErrorBoundary fallback={<SearchResultsError/>}>
-                    <Suspense fallback={<SearchAndFilterLoading query={searchParams.q}/>}>
-                        {/* @ts-expect-error Async Server Component */}
-                        <SearchResults user={searchParams.q} platform={searchParams.p}/>
-                    </Suspense>
-                </ErrorBoundary>
-                <Trending/>
+                <FilterContextProvider>
+                    <ErrorBoundary fallback={<SearchResultsError/>}>
+                        <Suspense fallback={<SearchAndFilterLoading query={searchParams.q}/>}>
+                            {/* @ts-expect-error Async Server Component */}
+                            <SearchResults user={searchParams.q} platform={searchParams.p}/>
+                        </Suspense>
+                    </ErrorBoundary>
+                    <Trending/>
+                </FilterContextProvider>
             </div>
         </main>
     )
