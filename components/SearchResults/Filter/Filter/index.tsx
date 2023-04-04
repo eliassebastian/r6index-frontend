@@ -9,10 +9,11 @@ interface FilterProps {
 }
 
 const Filter = ({ results }: FilterProps) => {
+    // Get unique values for each filter
     const getPlatforms = uniqueFieldValues( results, 'platform' );
-    const getKDs = uniqueFieldValues( results, 'ranked.0.kill_death_ratio' );
-    const getRanks = uniqueFieldValues( results, 'ranked.0.rank_text' );
-    const getWL = minAndMax( results, 'ranked.0.win_lose_ratio' );
+    const getKDs = minAndMax( results, 'ranked.kill_death_ratio' );
+    const getRanks = uniqueFieldValues( results, 'ranked.rank_text' );
+    const getWL = minAndMax( results, 'ranked.win_lose_ratio' );
     const getLevels = minAndMax( results, 'level' );
 
     return (
@@ -30,9 +31,9 @@ const Filter = ({ results }: FilterProps) => {
                 title={"Rank"}
                 type={"text"}
                 icon={"/icons/rank.png"}
-                field={"ranked.0.rank_text"}
+                field={"ranked.rank_text"}
                 data={getRanks}  
-                sort={"ranked.0.rank"} 
+                sort={"ranked.rank"} 
             />
             <FilterSection
                 name={"level"}
@@ -48,18 +49,18 @@ const Filter = ({ results }: FilterProps) => {
                 title={"K/D"}
                 type={"range"}
                 icon={"/icons/kill.png"}
-                field={"ranked.0.kill_death_ratio"}
+                field={"ranked.kill_death_ratio"}
                 data={getKDs}
-                sort={"ranked.0.kill_death_ratio"}
+                sort={"ranked.kill_death_ratio"}
             />
             <FilterSection
                 name={"wl"}
                 title={"W/L"}
                 type={"range"}
                 icon={"/icons/ratio.png"}
-                field={"ranked.0.win_lose_ratio"}
+                field={"ranked.win_lose_ratio"}
                 data={getWL}
-                sort={"ranked.0.win_lose_ratio"}
+                sort={"ranked.win_lose_ratio"}
             />
         </div>
     )
