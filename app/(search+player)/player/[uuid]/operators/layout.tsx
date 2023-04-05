@@ -1,11 +1,11 @@
 import OperatorsFilterButton from "@/components/Operators/OperatorsFilter/OperatorsFilterButton";
 import OperatorsLayoutNavigation from "@/components/Operators/OperatorsLayoutNavigation";
 import { fetchPlayer } from "@/lib/api/fetchPlayer";
-import Link from "next/link";
 import styles from "./OperatorPage.module.scss";
 
 export default async function Layout({ children, params }: { children: React.ReactNode; params: { uuid: string } }) {
     const {data: { operators }} = await fetchPlayer(params.uuid, "uplay");
+    
     // TODO: call notFound() if operators is null
     if (!operators) return null;
 
