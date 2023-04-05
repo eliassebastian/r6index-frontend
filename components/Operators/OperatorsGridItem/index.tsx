@@ -3,6 +3,7 @@ import { Operator } from "@/types/Operators";
 import Image from "next/image";
 import { useCallback, useRef } from "react";
 import styles from "./OperatorsGridItem.module.scss";
+import { convertNumberToTwoDecimals } from "@/utils/Numbers";
 
 interface OperatorsGridItemProps {
     data: Operator;
@@ -65,7 +66,7 @@ const OperatorsGridItem = (props: OperatorsGridItemProps) => {
         timeoutRef.current && cardRef.current?.classList.remove(styles.hover);
         timeoutRef.current && clearTimeout(timeoutRef.current);
     }
-
+    
     return (
         <div className={styles.container} ref={ref} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             <div className={styles.img_wrapper}>
@@ -78,8 +79,36 @@ const OperatorsGridItem = (props: OperatorsGridItemProps) => {
                     <div className={styles.banner_bg}>
                         <Image className={styles.img} src={operatorConfig.large} alt={`${ props.data.statsDetail } banner image`} sizes={"33vw"} fill priority />
                     </div>
+                    <div className={styles.operator}>
+                        <h2 className={styles.title}>{props.data.statsDetail}</h2>
+                    </div>
                 </div>
-                <h1>test</h1>
+                <ul className={styles.grid}>
+                    <li className={styles.grid_item}>
+                        <h3 className={styles.grid_title}>Win/Loss</h3>
+                        <span className={styles.grid_stat}>{convertNumberToTwoDecimals( props.data.roundsWon / props.data.roundsPlayed * 100, 1)}%</span>
+                    </li>
+                    <li className={styles.grid_item}>
+                        <h3 className={styles.grid_title}>K/D</h3>
+                        <span className={styles.grid_stat}>{convertNumberToTwoDecimals(props.data.killDeathRatio.value)}</span>
+                    </li>
+                    <li className={styles.grid_item}>
+                        <h3 className={styles.grid_title}>KOST</h3>
+                        <span className={styles.grid_stat}>{convertNumberToTwoDecimals(props.data.roundsWithKOST.value * 100)}%</span>
+                    </li>
+                    <li className={styles.grid_item}>
+                        <h3 className={styles.grid_title}>KPR</h3>
+                        <span className={styles.grid_stat}>{convertNumberToTwoDecimals(props.data.roundsWithAKill.value * 100)}%</span>
+                    </li>
+                    <li className={styles.grid_item}>
+                        <h3 className={styles.grid_title}>Headshots</h3>
+                        <span className={styles.grid_stat}>{convertNumberToTwoDecimals(props.data.headshotAccuracy.value * 100)}%</span>
+                    </li>
+                    <li className={styles.grid_item}>
+                        <h3 className={styles.grid_title}>Rounds Survived</h3>
+                        <span className={styles.grid_stat}>{convertNumberToTwoDecimals(props.data.roundsSurvived.value * 100)}%</span>
+                    </li>
+                </ul>
             </div>
         </div>
     )
