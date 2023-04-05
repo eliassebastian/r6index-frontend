@@ -1,10 +1,9 @@
 import { createContext, type Dispatch, type SetStateAction, useContext } from "react";
 
 interface UpdateDataContextType {
-    updateTimestamp: number;
-    initiateUpdate: (componentId: string, id: string, platform: string) => Promise<number>;
+    updateTimestamp: number | null;
+    initiateUpdate: (id: string, platform: string) => Promise<number>;
     isUpdating: boolean;
-    initiator: string | null;
     canUpdate: boolean;
     setCanUpdate: Dispatch<SetStateAction<boolean>>;
 }
