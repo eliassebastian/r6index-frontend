@@ -1,7 +1,7 @@
 'use client';
 
 import { FilterContext } from "@/context/FilterContext";
-import { Operator, OperatorSide } from "@/types/Operators"
+import type { Operator } from "@/types/Operators"
 import { filterAndSortData } from "@/utils/Filter";
 import { useContext } from "react";
 import OperatorsGridItem from "../OperatorsGridItem";
