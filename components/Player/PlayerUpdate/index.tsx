@@ -22,7 +22,6 @@ const PlayerUpdate = (props: PlayerUpdateProps) => {
     const onClick = async () => {
         if (isUpdating || !canBeUpdated) return;
         const response = await initiateUpdate(props.id, props.platform);
-        console.log("ONCLICK response", response);
         if (response === 202) {
             console.log("refresh");
             router.refresh();
