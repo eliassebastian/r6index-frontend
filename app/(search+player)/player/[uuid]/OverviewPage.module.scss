@@ -2,14 +2,26 @@
 .page {
     position: relative;
     display: grid;
-    grid-template-columns: 0.4fr 0.3fr 0.3fr;
-    grid-template-rows: 1fr 0.15fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
     //  summary / operators / weapons / maps / trends
-    grid-template-areas: "summary summary maps" "summary summary operators" "trends weapons operators";
+    grid-template-areas: "summary summary summary" "trends trends trends" "operators operators operators" "weapons weapons weapons" "maps maps maps";
     row-gap: 1.5rem;
     column-gap: 1.5rem;
     padding-bottom: 3rem;
     width: 100%;
     //min-height: 800px;
-    min-height: 700px;      
+    min-height: 700px;
+
+    @media screen and (min-width: 900px) {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "summary summary summary trends trends trends" "operators operators weapons weapons maps maps";
+    }
+    
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: 0.4fr 0.3fr 0.3fr;
+        grid-template-rows: 1fr 0.15fr 1fr;
+        grid-template-areas: "summary summary maps" "summary summary operators" "trends weapons operators";
+    }
 }
