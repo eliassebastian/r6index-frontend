@@ -15,7 +15,7 @@ interface PlayerBannerProps {
 const PlayerBanner = async (props: PlayerBannerProps) => {
     const { data: { operators } } = await fetchPlayer(props.uuid, "uplay");
 
-    const topOperator = operators && calculateBestOperator([...operators.attacker, ...operators.defender]);
+    const topOperator = operators && calculateBestOperator(operators);
     const operatorConfig = operators && operatorsConfig[topOperator.statsDetail];
 
     return (

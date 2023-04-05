@@ -1,5 +1,5 @@
 import type { Map } from "../Maps";
-import type { OperatorSide } from "../Operators";
+import type { Operator, OperatorSide } from "../Operators";
 import type { Weapon } from "../Weapons";
 
 export type PlayerResponse = {
@@ -23,7 +23,7 @@ export type PlayerProfile = {
     ranked:     Ranked;
     weapons:    Weapon[];
     maps:       Map[];
-    operators:  OperatorSide;
+    operators:  Operator[];
     trends:     Trends;
 }
 

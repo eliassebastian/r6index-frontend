@@ -11,6 +11,7 @@ export type OperatorSide = {
 
 export type Operator = {
     statsDetail:            string;
+    operatorSide:           "attacker" | "defender";
     matchesPlayed:          number;
     roundsPlayed:           number;
     minutesPlayed:          number;
@@ -46,5 +47,5 @@ export type Operator = {
     timeAlivePerMatch:      number;
     timeDeadPerMatch:       number;
     distancePerRound:       number;
-    score:                 number;
+    score:                  number;
 }
