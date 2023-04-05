@@ -1,0 +1,23 @@
+
+.container {
+    @media only screen and (min-width: 1024px) {
+        padding: 1rem 0;
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.page {
+    position: relative;
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+
+    @media screen and (min-width: 1024px) {
+        padding: 2rem 0;
+    }
+}
