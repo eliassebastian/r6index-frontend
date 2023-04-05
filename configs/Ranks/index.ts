@@ -1,3 +1,4 @@
+// Config For R6 Siege Ranked Ranks. Accurate as of the Commanding Force Update
 
 type RankInfo = {
     name: string;

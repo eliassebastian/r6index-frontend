@@ -1,3 +1,4 @@
+// Config For R6 Siege Weapons. Accurate as of the Commanding Force Update
 
 type Weapon = {
     image: string;

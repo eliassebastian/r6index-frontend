@@ -1,14 +1,15 @@
+// Config For R6 Siege Ranked Operators. Accurate as of the Commanding Force Update
 
-export const operatorsConfig: { [key: string]: {
-    
+type Operator = {
     large: string;
     color?: string[] | string | { [key: string]: string };
     elite?: string | string[];
     background?: string;
-    // elite: string;
-    
-} } = {
+}
+
+export const operatorsConfig: Record<string, Operator> = {
     Brava: {
+        //icon: "/icons/operators/brava.svg";
         large: "https://staticctf.ubisoft.com/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/7uyRvknQBEbg6KY37rXeK2/699fd5226e65c7b3ad5205dcf54360f4/r6s-operator-brava.png",
         color: ["#8C643F","#D3C3B0","#000000","#A2866B","#332E28"]
     },

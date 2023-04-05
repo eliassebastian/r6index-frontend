@@ -1,3 +1,4 @@
+// Config For R6 Siege Ranked Maps. Accurate as of the Commanding Force Update
 
 type Map = {
     name?: string;
