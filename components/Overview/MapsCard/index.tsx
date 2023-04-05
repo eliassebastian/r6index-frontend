@@ -13,12 +13,12 @@ interface MapsCardProps {
 
 const MapsCard = async (props: MapsCardProps) => {
     const { data: { maps } } = await fetchPlayer(props.uuid, "uplay");
-    // check if maps is null, if it is, throw an error for error boundary to catch 
+    // check if maps is null, if it is, return OverviewEmpty
     const isMapsNotAvailable = maps == null;
     if (isMapsNotAvailable) return <OverviewEmpty message="Map Data Currently Unavailable" subtitle="This could be due to not enough games played, New Season Starting, or Ubisoft Server Issues."/>;
 
     const topMap = calculateBestMap(maps);
-    const mapConfig = MapConfig[topMap.statsDetail];
+    //const mapConfig = MapConfig[topMap.statsDetail];
     const winRate = topMap.roundsWon / topMap.roundsPlayed * 100;
 
     return (
