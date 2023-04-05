@@ -44,10 +44,13 @@
 
 .weaponName {
     color: var(--color-az-cream);
-    font-size: 2rem;
+    font-size: clamp(1.25rem, 5vw, 2rem);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: .05em;
+    text-align: center;
+    justify-self: center;
+    //margin: 0 auto;
 }
 
 .weaponType {
@@ -58,6 +61,7 @@
     letter-spacing: .05em;
     margin-left: 1rem;
     opacity: 0.5;
+    text-align: center;
 }
 
 .grid {
