@@ -15,6 +15,10 @@ const OperatorsGridItem = (props: OperatorsGridItemProps) => {
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const operatorConfig = operatorsConfig[props.data.statsDetail];
 
+    // operator config not found
+    if (!operatorConfig) return null;
+
+    // add hover class when mouse enters with a delay if mouse leaves before timeout
     const onMouseEnter = useCallback(() => {
         if (!ref.current || !cardRef.current) return;
 
@@ -62,6 +66,7 @@ const OperatorsGridItem = (props: OperatorsGridItemProps) => {
         timeoutRef.current = timeout;
     }, []);
 
+    // remove hover class when mouse leaves
     const onMouseLeave = () => {
         timeoutRef.current && cardRef.current?.classList.remove(styles.hover);
         timeoutRef.current && clearTimeout(timeoutRef.current);
