@@ -33,10 +33,10 @@ const OperatorsGridItem = (props: OperatorsGridItemProps) => {
             const cardHeight = cardRef.current.clientHeight;
 
             // initial position of card depending on screen size
-            let cardX = screenWidth > 1023 ? (parentRect.width / 2) - (cardWidth / 2) : (screenWidth / 2) - (cardRef.current.offsetWidth / 2);
-            let cardY = screenWidth > 1023 ? (parentRect.height / 2) - (cardRef.current.clientHeight / 2) : (screenHeight / 2) - (cardRef.current.offsetHeight / 2);
+            let cardX = screenWidth >= 1024 ? (parentRect.width / 2) - (cardWidth / 2) : (screenWidth / 2) - (cardRef.current.offsetWidth / 2);
+            let cardY = screenWidth >= 1024 ? (parentRect.height / 2) - (cardRef.current.clientHeight / 2) : (screenHeight / 2) - (cardRef.current.offsetHeight / 2);
 
-            if (cardWidth > 1023) {
+            if (screenWidth >= 1024) {
                 // check if card will be out of screen to the right
                 if (parentPosLeft + cardWidth > containerWidth) {
                     cardX = parentRect.width - cardWidth;
