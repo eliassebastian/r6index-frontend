@@ -14,9 +14,6 @@ interface OperatorsGridProps {
 const OperatorsGrid = ({ data }: OperatorsGridProps) => {
     const { filters, setFilters } = useContext( FilterContext );
     //const filteredData = filterAndSortData( operators, filters.filterConditions, filters.sortCriteria );
-
-    console.log("count", data.length)
-
     return (
         <div className={styles.grid}>
             {
