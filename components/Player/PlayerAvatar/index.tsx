@@ -27,7 +27,7 @@ const PlayerAvatar = (props: PlayerAvatarProps) => {
         >
             <div className={`${styles.bg} ${isUpdating && styles.updating}`} style={{ opacity: canBeUpdated ? 1 : 0 }}></div>
             <div className={styles.img_bg}>
-                <Image src={`https://ubisoft-avatars.akamaized.net/${ props.id }/default_146_146.png`} fill priority alt="Player Avatar"/>
+                <Image src={`https://ubisoft-avatars.akamaized.net/${ props.id }/default_146_146.png`} fill sizes="33vw" priority alt="Player Avatar"/>
             </div>
         </button>
     )

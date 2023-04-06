@@ -17,7 +17,7 @@ const PlayerBanner = async (props: PlayerBannerProps) => {
 
     const topOperator = operators && calculateBestOperator(operators);
     const operatorConfig = operators && operatorsConfig[topOperator.statsDetail];
-
+    
     return (
         <section className={styles.banner}>
             {/* <PlayerTest data={player} /> */}
@@ -29,7 +29,7 @@ const PlayerBanner = async (props: PlayerBannerProps) => {
                 </Suspense>
             </div>
             {/* image */}
-            {operators && <Image className={styles.img} src={operatorConfig.large} alt={`${ topOperator.statsDetail } banner image`} fill priority />}
+            {operators && <Image className={styles.img} src={operatorConfig.large} alt={`${ topOperator.statsDetail } banner image`} sizes="33vw" fill priority />}
         </section>
     );
 }
