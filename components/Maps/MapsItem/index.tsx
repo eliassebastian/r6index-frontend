@@ -32,7 +32,7 @@ const MapsItem = (props: MapsItemProps) => {
     }
 
     return (
-        <li ref={ref} onClick={onClick} className={`${styles.list_item} ${props.index === 1 && styles.list_item_active}`}>
+        <li ref={ref} onClick={onClick} className={`${styles.list_item} ${props.index === 0 && styles.list_item_active}`}>
             <Image 
                 className={styles.list_image} 
                 src={mapConfig.image} 
