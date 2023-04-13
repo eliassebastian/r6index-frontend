@@ -17,7 +17,7 @@
     "classnames": "^2.3.2",
     "devalue": "^4.3.0",
     "eslint": "8.34.0",
-    "next": "13.2.4",
+    "next": "13.3.0",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "csstype": "^3.1.1",
-    "eslint-config-next": "13.2.4",
+    "eslint-config-next": "13.3.0",
     "sass": "^1.59.3"
   },
   "peerDependencies": {
