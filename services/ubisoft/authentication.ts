@@ -76,7 +76,13 @@ class UbisoftAuthenticationProvider {
 
     // ubisofts new api endpoint requires a ticket to be generated from the old api
     authenticateUbisoftCredentialsNew = async () => {
-        const response = await this.authenticateUbisoftCredentials(this.authentication.ticket);
+        const authTicket = this.authentication.ticket;
+
+        if (!authTicket) {
+            throw new Error('authentication ticket does not exist');
+        }
+
+        const response = await this.authenticateUbisoftCredentials(authTicket);
 
         if (!response) {
             throw new Error('invalid username or password');
