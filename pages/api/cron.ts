@@ -15,41 +15,65 @@ export default async function handler(request: NextApiRequest, response: NextApi
         return;
     }
 
-    // create authentication provider
-    const ubisoftAuthProvider = new UbisoftAuthenticationProvider(username, password);
+    try {
+        // create and initialise authentication provider
+        const ubisoftAuthProvider = new UbisoftAuthenticationProvider(username, password);
+        await ubisoftAuthProvider.authenticateUbisoftCredentialsOld();
+        await ubisoftAuthProvider.authenticateUbisoftCredentialsNew();
 
-    // update edge config
-    const updateEdgeConfig = await fetch(
-        `https://api.vercel.com/v1/edge-config/${process.env.VERCEL_CONFIG_ID}/items`,
-        {
-            method: 'PATCH',
-            headers: {
-                Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}`,
-                'Content-Type': 'application/json',
+        // get authentication values
+        const authValues = ubisoftAuthProvider.getAuthenticationValues();
+
+        // update edge config
+        const updateEdgeConfig = await fetch(
+            `https://api.vercel.com/v1/edge-config/${process.env.VERCEL_CONFIG_ID}/items`,
+            {
+                method: 'PATCH',
+                headers: {
+                    Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    items: [
+                        {
+                            operation: 'update',
+                            key: 'ticket',
+                            value: authValues.ticket,
+                        },
+                        {
+                            operation: 'update',
+                            key: 'session',
+                            value: authValues.session,
+                        },
+                        {
+                            operation: 'update',
+                            key: 'expiration',
+                            value: authValues.expiration,
+                        },
+                        {
+                            operation: 'update',
+                            key: 'ticketNew',
+                            value: authValues.ticketNew,
+                        },
+                        {
+                            operation: 'update',
+                            key: 'sessionNew',
+                            value: authValues.sessionNew,
+                        },
+                        {
+                            operation: 'update',
+                            key: 'expirationNew',
+                            value: authValues.expirationNew,
+                        },
+                    ],
+                }),
             },
-            body: JSON.stringify({
-                items: [
-                    {
-                        operation: 'create',
-                        key: 'example_key_1',
-                        value: 'example_value_1',
-                    },
-                    {
-                        operation: 'update',
-                        key: 'example_key_2',
-                        value: 'new_value',
-                    },
-                ],
-            }),
-        },
-    );
-
-    const result = await updateEdgeConfig.json();
-
-
-
+        );
     
-    
-
-    response.status(200).json({ success: true});
+        const result = await updateEdgeConfig.json();
+        
+        response.status(200).json({ success: true});
+    } catch (error) {
+        response.status(404).end();
+    }
 }
