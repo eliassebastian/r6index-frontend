@@ -18,7 +18,7 @@ type UbisoftAuthentication = {
     expirationNew?: string,
 }
 
-class UbisoftAuthenticationProvider {
+export default class UbisoftAuthenticationProvider {
 
     private basicToken: string;
     private authentication: UbisoftAuthentication;
