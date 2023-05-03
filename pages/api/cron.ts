@@ -14,6 +14,7 @@ export default async function handler(request: NextRequest) {
     // check if request has valid key
     const key = request.nextUrl.searchParams.get("key");
     if (!key || key !== process.env.CRON_KEY) {
+        console.log("invalid request key")
         return errorResponse({error: "invalid request key"});
     }
 
@@ -21,6 +22,7 @@ export default async function handler(request: NextRequest) {
     const username = process.env.UBISOFT_USERNAME;
     const password = process.env.UBISOFT_PASSWORD;
     if (!username || !password) {
+        console.log("invalid ubisoft credentials")
         return errorResponse({error: "invalid ubisoft credentials"});
     }
 
@@ -82,12 +84,14 @@ export default async function handler(request: NextRequest) {
         // check if edge config update was successful
         const result = await updateEdgeConfig.json();
         if (result.error) {
+            console.log("error updating edge config")
             return errorResponse(result.error);
         }
 
         NextResponse.json(result);
     } catch (error) {
         if (error instanceof Error) {
+            console.log(error.message)
             return errorResponse({error: error.message});
         }
     }
