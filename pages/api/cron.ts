@@ -1,19 +1,43 @@
 import UbisoftAuthenticationProvider from "@/services/ubisoft/authentication";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from 'next/server';
+ 
+export const config = {
+  runtime: 'edge'
+};
 
-export default async function handler(request: NextApiRequest, response: NextApiResponse) {
+export default async function handler(request: NextRequest) {
     // check if request has valid key
-    if (request.query.key !== process.env.CRON_KEY) {
-        response.status(404).end();
-        return;
+    const key = request.nextUrl.searchParams.get("key");
+
+    if (!key || key !== process.env.CRON_KEY) {
+        return new Response(
+            JSON.stringify({
+                error: "Invalid Request Key",
+            }),
+            {
+                status: 404,
+                headers: {
+                    'content-type': 'application/json',
+                },
+            }
+        );
     }
 
     // get username and password from env file
     const username = process.env.UBISOFT_USERNAME;
     const password = process.env.UBISOFT_PASSWORD;
     if (!username || !password) {
-        response.status(404).end();
-        return;
+        return new Response(
+            JSON.stringify({
+                error: "Invalid Ubisoft Credentials",
+            }),
+            {
+                status: 404,
+                headers: {
+                    'content-type': 'application/json',
+                },
+            }
+        );
     }
 
     try {
@@ -27,7 +51,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
         // update edge config
         const updateEdgeConfig = await fetch(
-            `https://api.vercel.com/v1/edge-config/${process.env.VERCEL_CONFIG_ID}/items?teamId=${process.env.VERCEL_TEAM_ID}}`,
+            `https://api.vercel.com/v1/edge-config/${process.env.VERCEL_CONFIG_ID}/items?teamId=${process.env.VERCEL_TEAM_ID}`,
             {
                 method: 'PATCH',
                 headers: {
@@ -70,11 +94,31 @@ export default async function handler(request: NextApiRequest, response: NextApi
                 }),
             },
         );
-    
+            
+        // check if edge config update was successful
         const result = await updateEdgeConfig.json();
-        
-        response.status(200).json({ success: true});
+        if (result.error) {
+            return new Response(
+                JSON.stringify(result.error),
+                {
+                    status: 404,
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                }
+            );
+        }
+
+        NextResponse.json(result);
     } catch (error) {
-        response.status(404).end();
+        return new Response(
+            JSON.stringify(error),
+            {
+                status: 404,
+                headers: {
+                    'content-type': 'application/json',
+                },
+            }
+        );
     }
 }
