@@ -5,38 +5,23 @@ export const config = {
   runtime: 'edge'
 };
 
+const errorResponse = (message: { error: string }) => new Response(JSON.stringify(message), { 
+    status: 404, 
+    headers: { 'content-type': 'application/json' } 
+});
+
 export default async function handler(request: NextRequest) {
     // check if request has valid key
     const key = request.nextUrl.searchParams.get("key");
     if (!key || key !== process.env.CRON_KEY) {
-        return new Response(
-            JSON.stringify({
-                error: "Invalid Request Key",
-            }),
-            {
-                status: 404,
-                headers: {
-                    'content-type': 'application/json',
-                },
-            }
-        );
+        return errorResponse({error: "invalid request key"});
     }
 
     // get username and password from env file
     const username = process.env.UBISOFT_USERNAME;
     const password = process.env.UBISOFT_PASSWORD;
     if (!username || !password) {
-        return new Response(
-            JSON.stringify({
-                error: "Invalid Ubisoft Credentials",
-            }),
-            {
-                status: 404,
-                headers: {
-                    'content-type': 'application/json',
-                },
-            }
-        );
+        return errorResponse({error: "invalid ubisoft credentials"});
     }
 
     try {
@@ -97,27 +82,13 @@ export default async function handler(request: NextRequest) {
         // check if edge config update was successful
         const result = await updateEdgeConfig.json();
         if (result.error) {
-            return new Response(
-                JSON.stringify(result.error),
-                {
-                    status: 404,
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                }
-            );
+            return errorResponse(result.error);
         }
 
         NextResponse.json(result);
     } catch (error) {
-        return new Response(
-            JSON.stringify(error),
-            {
-                status: 404,
-                headers: {
-                    'content-type': 'application/json',
-                },
-            }
-        );
+        if (error instanceof Error) {
+            return errorResponse({error: error.message});
+        }
     }
 }
