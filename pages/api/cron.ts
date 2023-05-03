@@ -84,7 +84,7 @@ export default async function handler(request: NextRequest) {
         // check if edge config update was successful
         const result = await updateEdgeConfig.json();
         if (result.error) {
-            console.log("error updating edge config", result.error)
+            console.log("error updating edge config", result.error, process.env.VERCEL_API_TOKEN)
             return errorResponse(result.error);
         }
 
