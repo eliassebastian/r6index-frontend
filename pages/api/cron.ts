@@ -8,7 +8,6 @@ export const config = {
 export default async function handler(request: NextRequest) {
     // check if request has valid key
     const key = request.nextUrl.searchParams.get("key");
-
     if (!key || key !== process.env.CRON_KEY) {
         return new Response(
             JSON.stringify({
