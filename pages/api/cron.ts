@@ -84,7 +84,7 @@ export default async function handler(request: NextRequest) {
         // check if edge config update was successful
         const result = await updateEdgeConfig.json();
         if (result.error) {
-            console.log("error updating edge config")
+            console.log("error updating edge config", result.error)
             return errorResponse(result.error);
         }
 
