@@ -26,7 +26,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
         // update edge config
         const updateEdgeConfig = await fetch(
-            `https://api.vercel.com/v1/edge-config/${process.env.VERCEL_CONFIG_ID}/items`,
+            `https://api.vercel.com/v1/edge-config/${process.env.VERCEL_CONFIG_ID}/items?teamId=${process.env.VERCEL_TEAM_ID}}`,
             {
                 method: 'PATCH',
                 headers: {
